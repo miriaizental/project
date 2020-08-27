@@ -1,5 +1,8 @@
 const User={
-    Firstname,
-    LastName
+    password,
+    userName,
+    phone,
+    city,
+    restriction
 
 }
