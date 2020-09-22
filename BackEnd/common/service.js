@@ -1,24 +1,24 @@
 
 
- function successResponse(message, DATA, res) {
-    
-    res.status(200).json({
+function successResponse(message, DATA, res) {
+
+    return res.status(200).json({
         STATUS: 'SUCCESS',
         MESSAGE: message,
         DATA
     });
 }
 
- function failureResponse(message, DATA, res) {
-    res.status(200).json({
+function failureResponse(message, DATA, res) {
+    return res.status(200).json({
         STATUS: 'FAILURE',
         MESSAGE: message,
         DATA
     });
-    
+
 }
 
- function insufficientParameters(res) {
+function insufficientParameters(res) {
     res.status(401).json({
         STATUS: 'FAILURE',
         MESSAGE: 'Insufficient parameters',
@@ -26,16 +26,17 @@
     });
 }
 
- function MySqlError(err, res) {
+function MySqlError(err, res) {
     res.status(500).json({
         STATUS: 'FAILURE',
         MESSAGE: 'DataBase error',
         DATA: err
-    })}
+    })
+}
 
-    module.exports={
-        successResponse,
-        failureResponse,
-        insufficientParameters,
-        MySqlError
-    }
+module.exports = {
+    successResponse,
+    failureResponse,
+    insufficientParameters,
+    MySqlError
+}
