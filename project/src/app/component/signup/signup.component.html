@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form [formGroup]="signUpForm" (submit)="sendData()">
+
+    <div>
+      <label for="name">שם משתמש:</label>
+      <input id="name" type="text" formControlName="userName">
+      <div class="error" *ngIf="signUpForm.controls['userName'].errors?.required!=null">שדה זה הוא שדה חובה</div>
+    </div>
+
+    <div>
+      <label for="password">ססמה:</label>
+      <input id="password" type="text" formControlName="password">
+      <div class="error" *ngIf="signUpForm.controls['password'].errors?.required!=null">שדה זה הוא שדה חובה</div>
+    </div>
+
+    <div>
+      <label for="phone">טלפון:</label>
+      <input id="phone" type="text" formControlName="phone">
+      <div class="error" *ngIf="signUpForm.controls['phone'].errors?.required!=null">שדה זה הוא שדה חובה</div>
+      <div class="error" *ngIf="signUpForm.controls['phone'].errors?.minlength!=null"> אורך מינימלי 9 ספרות </div>
+      <div class="error" *ngIf="signUpForm.controls['phone'].errors?.pattern!=null">ספרות בלבד</div>
+      <div></div>
+    </div>
+
+    <div>
+      <label for="city">עיר:</label>
+      <input id="city" type="text" formControlName="city">
+      <div class="error" *ngIf="signUpForm.controls['city'].errors?.required!=null">שדה זה הוא שדה חובה</div>
+    </div>
+
+    <div>
+      <label for="restriction">סוג המגבלה:</label>
+      <input id="restriction" type="text" formControlName="restriction">
+      <div class="error" *ngIf="signUpForm.controls['restriction'].errors?.required!=null">שדה זה הוא שדה חובה</div>
+    </div>
+
+    <input type="submit" value="הרשם">
+
+  </form>
+</body>
+
+</html>

@@ -1,25 +1,17 @@
 const commonService = require("../common/service")
 const AskForHelpController = require("../controllers/AskForHelp.controller.js")
-const SignupRouter=require("../controllers/SignUp.controller")
+const SignupRouter = require("../controllers/SignUp.controller")
 
 function route(app) {
 
-    app.use("/api/signUp", (req, res, next) => {
-        if (req.method == 'POST') {
-            var password = AskForHelpController.CheckPassword(req, res);
-            if (password == undefined) {
-                next()
-            }
-        }    
-    })
 
-    app.get("/api/signUp", (req, res) => {
-        res.sendFile('')
-    })
+    // app.use("/api/signUp", (req, res, next) => {
+    //     CheckPassword(req,res)
+    //     next()
+    // })
 
-    app.post("/api/signUp",(req,res)=>{
-        let data=req.body
-        console.log(data);
+    app.post("/api/signUp", (req, res) => {
+        let data = req.body
         var result = SignupRouter.CreateNewUser(req, res);
     })
 }
