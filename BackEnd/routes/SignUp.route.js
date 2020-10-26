@@ -1,6 +1,6 @@
 const commonService = require("../common/service")
 const AskForHelpController = require("../controllers/AskForHelp.controller.js")
-const SignupRouter = require("../controllers/SignUp.controller")
+const SignupController = require("../controllers/SignUp.controller")
 
 function route(app) {
 
@@ -12,7 +12,7 @@ function route(app) {
 
     app.post("/api/signUp", (req, res) => {
         let data = req.body
-        var result = SignupRouter.CreateNewUser(req, res);
+        var result = SignupController.CreateNewUser(req, res);
     })
 }
 

@@ -18,22 +18,29 @@ export class SignupComponent implements OnInit {
     this.signUpForm = new FormGroup({
       userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      phone: new FormControl('',Validators.compose([Validators.required,Validators.minLength(9),Validators.maxLength(10),Validators.pattern('^[0-9]*')])),
+      phone: new FormControl('', Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern('^[0-9]*')])),
       city: new FormControl('', Validators.required),
       restriction: new FormControl('', Validators.required)
     })
   }
+
   sendData() {
-    if(this.signUpForm.valid==true){      
-    this.volunteeringservice.postSignUp(this.signUpForm.controls.userName.value, this.signUpForm.controls.password.value, this.signUpForm.controls.phone.value,
-      this.signUpForm.controls.city.value, this.signUpForm.controls.restriction.value).subscribe();
+    if (this.signUpForm.valid == true) {
+      console.log('the data was sent');
+
+      this.volunteeringservice.postSignUp(
+        this.signUpForm.controls.userName.value,
+        this.signUpForm.controls.password.value,
+        this.signUpForm.controls.phone.value,
+        this.signUpForm.controls.city.value,
+        this.signUpForm.controls.restriction.value).subscribe()
+
       this.signUpForm.reset();
     }
-    else{
-
-      
+    else {
+      console.log('error');
     }
-      
+
   }
 
 }

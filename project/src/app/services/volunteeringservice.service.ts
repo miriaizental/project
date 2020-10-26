@@ -22,9 +22,11 @@ export class VolunteeringserviceService {
   //   return this.http.get<AskForHelp[]>(`${this.url}`)
   // }
 
-  postSignIn(userName: string, password: string) {
-    return this.http.post<User>(`${this.url}`, { userName, password })
-  }
+  // postSignIn(userName: string, password: string) {
+  //   return this.http.post<User>(`${this.url}`, { userName, password })
+  // }
+
+  
   postSignUp(userName: string, password: string, phone: string, city: string, restriction: string): Observable<User[]> {
     return this.http.post<User>(`${this.url}/api/signUp`, { userName, password, phone, city, restriction},this.options)
   }
