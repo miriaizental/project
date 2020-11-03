@@ -39,6 +39,7 @@ export class SignupComponent implements OnInit {
     }
     else {
       console.log('error');
+      this.signUpForm.markAllAsTouched();
     }
 
   }

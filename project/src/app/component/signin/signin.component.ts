@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service'
-
+import { Router, RouterLink } from '@angular/router';
+import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,22 +12,25 @@ export class SigninComponent implements OnInit {
 
   signInForm: FormGroup
 
-  constructor(private volunteeringservice: VolunteeringserviceService) { }
+  constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) { }
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
-      name: new FormControl('', Validators.required),
+      userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     })
+
   }
 
-  send(){
-
+  send() {
     if (this.signInForm.valid) {
       // this.volunteeringservice.postSignIn(this.signInForm.controls.name.value, this.signInForm.controls.password.value)
-      // this.signInForm.reset()
+      this.route.navigate(['/createnewcall', this.signInForm.controls.password.value])
+      this.signInForm.reset()
+
     }
     else {
+      this.signInForm.markAllAsTouched();
 
     }
   }

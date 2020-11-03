@@ -4,6 +4,9 @@ body{
     font-size: large;
 }
 button{
-    font-size: x-large;
-    margin: 15px;
+    font-size: large;
+    margin: 5px;
+}
+.error{
+    font-size:13px;
 }

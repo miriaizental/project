@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <form>
+    <form [formGroup]="createNewCallForm" (submit)="send()">
 
         <div>
             <label for="requestdetails">פרט את בקשתך </label>
-            <input id="requestdetails" type="text" formControlName="name">
+            <input id="requestdetails" type="text" formControlName="details">
+            <div class="error" *ngIf="createNewCallForm.controls['details'].errors?.required!=null&&createNewCallForm.controls['details'].touched==true">שדה זה הוא שדה חובה</div>
+
         </div>
+
         <button class="button" type="submit">שלח</button>
-    
+
     </form>
 </body>
+
 </html>

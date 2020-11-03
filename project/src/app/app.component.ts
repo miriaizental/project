@@ -13,6 +13,8 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.route.navigate(["/askforhelp"])
+    console.log(this.route);
+    
   }
 
   askForHelp(){
@@ -21,6 +23,9 @@ export class AppComponent {
 
   signup(){
     this.route.navigate(["/signup"])
+  }
+  requests(){
+    this.route.navigate(["/askforhelp"])
 
   }
 }

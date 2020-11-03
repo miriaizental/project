@@ -23,8 +23,8 @@
     </div>
 
     <div>
-      <label for="phone">טלפון:</label>
-      <input id="phone" type="text" formControlName="phone">
+      <label for="phone" >טלפון:</label>
+      <input id="phone" type="text" formControlName="phone" maxlength="10">
       <div class="error" *ngIf="signUpForm.controls['phone'].errors?.required!=null&&signUpForm.controls['phone'].touched==true">שדה זה הוא שדה חובה</div>
       <div class="error" *ngIf="signUpForm.controls['phone'].errors?.minlength!=null"> אורך מינימלי 9 ספרות </div>
       <div class="error" *ngIf="signUpForm.controls['phone'].errors?.pattern!=null">ספרות בלבד</div>

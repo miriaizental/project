@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createnewcall',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatenewcallComponent implements OnInit {
 
-  constructor() { }
+  createNewCallForm: FormGroup
+
+
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+
+    this.createNewCallForm = new FormGroup({
+      details: new FormControl('', Validators.required)
+    })
+
+  }
+
+  send() {
+    if (this.createNewCallForm.valid) {
+      this.route.navigate(['/'])
+    }
+    else {
+      this.createNewCallForm.markAllAsTouched();
+
+    }
   }
 
 }
