@@ -17,7 +17,11 @@ export class CreatenewcallComponent implements OnInit {
   ngOnInit(): void {
 
     this.createNewCallForm = new FormGroup({
-      details: new FormControl('', Validators.required)
+      details: new FormControl('', Validators.required),
+      time: new FormControl('',Validators.required),
+      location: new FormControl('',Validators.required),
+      city: new FormControl(''),
+      street: new FormControl('')
     })
 
   }
@@ -28,7 +32,6 @@ export class CreatenewcallComponent implements OnInit {
     }
     else {
       this.createNewCallForm.markAllAsTouched();
-
     }
   }
 

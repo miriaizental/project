@@ -18,7 +18,7 @@
 
     <div>
       <label for="password">ססמה:</label>
-      <input id="password" type="text" formControlName="password">
+      <input id="password" type="text" formControlName="password" maxlength="10">
       <div class="error" *ngIf="signUpForm.controls['password'].errors?.required!=null&&signUpForm.controls['password'].touched==true">שדה זה הוא שדה חובה</div>
     </div>
 

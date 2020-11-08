@@ -8,7 +8,7 @@ function CreateNewCall(request, response) {
     const data = dal.executeAsync(query, request.body,response)
     if (data!=undefined) {
         console.log('result: '+data.value);
-        successResponse("create succesfully", data, response)
+        //successResponse("create succesfully", data, response)
     }
 }
 

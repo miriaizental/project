@@ -6,6 +6,8 @@ body{
 button{
     font-size: large;
     margin: 5px;
+    width: 95%;
+    
 }
 .error{
     font-size:13px;

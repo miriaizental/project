@@ -13,11 +13,43 @@
         <div>
             <label for="requestdetails">פרט את בקשתך </label>
             <input id="requestdetails" type="text" formControlName="details">
-            <div class="error" *ngIf="createNewCallForm.controls['details'].errors?.required!=null&&createNewCallForm.controls['details'].touched==true">שדה זה הוא שדה חובה</div>
-
+            <div class="error"
+                *ngIf="createNewCallForm.controls['details'].errors?.required!=null&&createNewCallForm.controls['details'].touched==true">
+                שדה זה הוא שדה חובה</div>
+        </div>
+        <div>
+            <label for="time">מועד ההתנדבות</label>
+            <select formControlName="time">
+                <option value="A">גמיש</option>
+                <option value="B">מיידי</option>
+            </select>
+            <!-- <input type="text" formControlName="time"> -->
+            <div class="error"
+                *ngIf="createNewCallForm.controls['time'].errors?.required!=null&&createNewCallForm.controls['time'].touched==true">
+                שדה זה הוא שדה חובה</div>
+        </div>
+        <div>
+            <label for="location">קבע מיקום</label>
+            <select formControlName="location">
+                <option value="A">באופן אוטומטי</option>
+                <option value="B">באופן ידני</option>
+            </select>
+            <!-- <input type="text" formControlName="time"> -->
+            <div class="error"*ngIf="createNewCallForm.controls['location'].errors?.required!=null&&createNewCallForm.controls['location'].touched==true">שדה זה הוא שדה חובה</div>
         </div>
 
-        <button class="button" type="submit">שלח</button>
+        <div id="address">
+            <div>
+                <label for="city">עיר</label>
+                <input id="city" type="text" formControlName="city">
+            </div>
+            <div>
+                <label for="street">רחוב ומספר בית</label>
+                <input id="street" type="text" formControlName="street">
+            </div>
+        </div>
+
+        <input class="button" type="submit">
 
     </form>
 </body>

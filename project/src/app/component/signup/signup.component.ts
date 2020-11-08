@@ -26,19 +26,20 @@ export class SignupComponent implements OnInit {
 
   sendData() {
     if (this.signUpForm.valid == true) {
-      console.log('the data was sent');
+      
 
       this.volunteeringservice.postSignUp(
         this.signUpForm.controls.userName.value,
         this.signUpForm.controls.password.value,
         this.signUpForm.controls.phone.value,
         this.signUpForm.controls.city.value,
-        this.signUpForm.controls.restriction.value).subscribe()
+        this.signUpForm.controls.restriction.value
+      ).subscribe();
 
-      this.signUpForm.reset();
+
+      //this.signUpForm.reset();
     }
     else {
-      console.log('error');
       this.signUpForm.markAllAsTouched();
     }
 

@@ -12,20 +12,8 @@ export class AppComponent {
   constructor(private route:Router) { }
 
   ngOnInit(): void {
-    this.route.navigate(["/askforhelp"])
-    console.log(this.route);
-    
+    //this.route.navigate(["/askforhelp"])
   }
 
-  askForHelp(){
-    this.route.navigate(["/signin"])
-  }
-
-  signup(){
-    this.route.navigate(["/signup"])
-  }
-  requests(){
-    this.route.navigate(["/askforhelp"])
-
-  }
+  
 }

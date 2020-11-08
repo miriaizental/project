@@ -10,8 +10,8 @@ import { User } from '../models/User'
 })
 export class VolunteeringserviceService {
 
-  options={
-    headers:new HttpHeaders({'Content-Type':'application/json'})
+  options = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
   url = "http://localhost:3000"
@@ -25,9 +25,11 @@ export class VolunteeringserviceService {
   // postSignIn(userName: string, password: string) {
   //   return this.http.post<User>(`${this.url}`, { userName, password })
   // }
+  // getPassword(password: string){
+  //   return this.http.get<string>(`${this.url}/api/checkPassword`, {params: {pass: password}})
+  // }
 
-  
-  postSignUp(userName: string, password: string, phone: string, city: string, restriction: string): Observable<User[]> {
-    return this.http.post<User>(`${this.url}/api/signUp`, { userName, password, phone, city, restriction},this.options)
+  postSignUp(userName: string, password: string, phone: string, city: string, restriction: string): Observable<string> {
+    return this.http.post<string>(`${this.url}/api/signUp`, { userName, password, phone, city, restriction }, this.options)
   }
 }

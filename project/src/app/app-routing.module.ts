@@ -7,12 +7,10 @@ import { AskforhelpComponent } from 'src/app/component/askforhelp/askforhelp.com
 import { AppComponent } from 'src/app/app.component'
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: AskforhelpComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'createnewcall/:id', component: CreatenewcallComponent },
-  { path: 'askforhelp', component: AskforhelpComponent }
-
 ];
 
 @NgModule({
