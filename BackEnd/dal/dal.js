@@ -8,23 +8,6 @@ var config = {
     database: 'volunteering'
 };
 
-// function executeAsync(query, values, res) {
-//     return new Promise(function (resolve, rejects) {
-//         sql.connect(config).then(() => {
-//             var request = new sql.Request();
-//             request.query(query, function (err, result) {
-//                 if (err) {
-//                     rejects(err);
-//                     //commonService.MySqlError(err, res)
-//                 }
-//                 else {
-//                     resolve(result);
-//                 }
-//             })
-//         })
-//     }).catch((err)=>console.log('err from promise '+err));
-// }
-
 function executeAsync(query, values, res) {
     return new Promise(function (resolve, reject) {
         sql.connect(config).then(() => {
@@ -42,6 +25,20 @@ function executeAsync(query, values, res) {
 
     })
 }
+
+// function executeAsync(query, values, res) {
+
+//     sql.connect(config, function (err) {
+ 
+//         if (err) console.log("first"+err);
+//         var request = new sql.Request();
+//         request.query(query, function (err, recordset) {
+//             if (err) console.log(err)
+//             return recordset
+            
+//         });
+//     });
+// };
 
 
 module.exports = {

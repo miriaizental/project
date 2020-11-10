@@ -6,11 +6,9 @@ function route(app) {
 
 
 
-    // app.use("/api/signUp", (req, res, next) => {
-    //     var result = SignupController.CheckPassword(req, res);
-    //     console.log(result+'-result');
-    //     //next()
-    // })
+    app.get("/api/checkPassword", (req, res, next) => {
+        SignupController.CheckPassword(req, res);
+    })
 
     app.post("/api/signUp", (req, res) => {
         var result = SignupController.CreateNewUser(req, res);

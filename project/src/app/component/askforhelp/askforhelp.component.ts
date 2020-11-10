@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service'
-import { askForHelp } from 'src/app/models/askForHelp'
+import { AskForHelp } from 'src/app/models/askForHelp'
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AskforhelpComponent implements OnInit {
 
-  requests: Array<askForHelp>
+  requests: Array<AskForHelp>
 
   constructor(private volunteeringservice: VolunteeringserviceService,private route: Router) { }
 

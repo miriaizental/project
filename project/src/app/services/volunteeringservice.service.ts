@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { AskForHelp } from '../models/AskForHelp'
-import { User } from '../models/User'
-
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +23,13 @@ export class VolunteeringserviceService {
   // postSignIn(userName: string, password: string) {
   //   return this.http.post<User>(`${this.url}`, { userName, password })
   // }
-  // getPassword(password: string){
-  //   return this.http.get<string>(`${this.url}/api/checkPassword`, {params: {pass: password}})
-  // }
 
-  postSignUp(userName: string, password: string, phone: string, city: string, restriction: string): Observable<string> {
-    return this.http.post<string>(`${this.url}/api/signUp`, { userName, password, phone, city, restriction }, this.options)
+  checkPassword(password: string) : Observable<boolean>{
+    return this.http.get<boolean>(`${this.url}/api/checkPassword`, { params: { password: password} })
   }
+
+  postSignUp(user:User): Observable<string> {
+    return this.http.post<string>(`${this.url}/api/signUp`, user, this.options)
+  }
+
 }
