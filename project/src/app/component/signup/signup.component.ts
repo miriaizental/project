@@ -38,14 +38,11 @@ export class SignupComponent implements OnInit {
         user.city = this.signUpForm.controls.city.value,
         user.restriction = this.signUpForm.controls.restriction.value
 
-      //this.volunteeringservice.postSignUp(user).subscribe((user) => console.log(user));
-      //this.signUpForm.reset();
-
+      this.volunteeringservice.SignUp(user).subscribe((user) => console.log(user));
     }
     else {
       this.signUpForm.markAllAsTouched();
     }
-
   }
 
 }

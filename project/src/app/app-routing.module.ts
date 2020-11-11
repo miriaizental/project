@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignupComponent } from 'src/app/component/signup/signup.component';
 import { SigninComponent } from 'src/app/component/signin/signin.component';
 import { CreatenewcallComponent } from 'src/app/component/createnewcall/createnewcall.component';
-import { AskforhelpComponent } from 'src/app/component/askforhelp/askforhelp.component';
+import { reservoirOfRequestsComponent } from 'src/app/component/reservoirOfRequests/reservoirOfRequests.component';
 import { AppComponent } from 'src/app/app.component'
 
 const routes: Routes = [
-  { path: '', component: AskforhelpComponent },
+  { path: '', component: reservoirOfRequestsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'createnewcall/:id', component: CreatenewcallComponent },
+  { path: 'createnewcall', component: CreatenewcallComponent },
 ];
 
 @NgModule({

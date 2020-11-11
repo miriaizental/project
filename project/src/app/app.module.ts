@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { SigninComponent } from './component/signin/signin.component';
-import { AskforhelpComponent } from './component/askforhelp/askforhelp.component';
+import { reservoirOfRequestsComponent } from './component/reservoirOfRequests/reservoirOfRequests.component';
 import { CreatenewcallComponent } from './component/createnewcall/createnewcall.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     SignupComponent,
     SigninComponent,
-    AskforhelpComponent,
+    reservoirOfRequestsComponent,
     CreatenewcallComponent
   ],
   imports: [

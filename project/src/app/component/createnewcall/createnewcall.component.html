@@ -20,8 +20,8 @@
         <div>
             <label for="time">מועד ההתנדבות</label>
             <select formControlName="time">
-                <option value="A">גמיש</option>
-                <option value="B">מיידי</option>
+                <option value="גמיש">גמיש</option>
+                <option value="מיידי">מיידי</option>
             </select>
             <!-- <input type="text" formControlName="time"> -->
             <div class="error"
@@ -30,22 +30,24 @@
         </div>
         <div>
             <label for="location">קבע מיקום</label>
-            <select formControlName="location">
-                <option value="A">באופן אוטומטי</option>
-                <option value="B">באופן ידני</option>
+            <select formControlName="location" id="location" name="location">
+                <option value="באופן אוטומטי">באופן אוטומטי</option>
+                <option value="באופן ידני">באופן ידני</option>
             </select>
             <!-- <input type="text" formControlName="time"> -->
             <div class="error"*ngIf="createNewCallForm.controls['location'].errors?.required!=null&&createNewCallForm.controls['location'].touched==true">שדה זה הוא שדה חובה</div>
         </div>
-
-        <div id="address">
+        <div *ngIf="createNewCallForm.controls['location'].value=='באופן ידני'">
             <div>
                 <label for="city">עיר</label>
                 <input id="city" type="text" formControlName="city">
+                <div class="error"*ngIf="createNewCallForm.controls['city'].value==''&&createNewCallForm.controls['city'].touched==true">שדה זה הוא שדה חובה</div>
             </div>
             <div>
                 <label for="street">רחוב ומספר בית</label>
                 <input id="street" type="text" formControlName="street">
+                <div class="error"*ngIf="createNewCallForm.controls['street'].value==''&&createNewCallForm.controls['street'].touched==true">שדה זה הוא שדה חובה</div>
+
             </div>
         </div>
 

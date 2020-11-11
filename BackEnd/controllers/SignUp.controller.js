@@ -6,17 +6,15 @@ tableName = "Users_tbl"
 
 
 
-async function CreateNewUser(request, response) {
+function CreateNewUser(request, response) {
     const user = request.body
 
     const query = `INSERT INTO ${tableName} VALUES('${user.password}','${user.userName}','${user.phone}','${user.city}','${user.restriction}')`
     dal.executeAsync(query, request.body, response).then((data) => {
 
-        //console.log('data from CreateNewUser: ' + JSON.stringify(data))
-        //response.send(data)
-
     }, (err) => console.log('err from CreateNewUser: ' + err))
         .catch((err) => console.log('err from catch: ' + err))
+
 }
 
 

@@ -8,10 +8,7 @@ function route(app) {
 
     
     app.post("/api/createNewCall", (req, res) => {
-        let data=req.body
-        //console.log(data);
-        var result = AskForHelpController.CreateNewCall(req, res);
-
+        AskForHelpController.CreateNewCall(req, res);
     })
 
 }

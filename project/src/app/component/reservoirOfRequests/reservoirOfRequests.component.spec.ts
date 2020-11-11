@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AskforhelpComponent } from './askforhelp.component';
+import { reservoirOfRequestsComponent } from './reservoirOfRequests.component';
 
 describe('AskforhelpComponent', () => {
-  let component: AskforhelpComponent;
-  let fixture: ComponentFixture<AskforhelpComponent>;
+  let component: reservoirOfRequestsComponent;
+  let fixture: ComponentFixture<reservoirOfRequestsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AskforhelpComponent ]
+      declarations: [ reservoirOfRequestsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AskforhelpComponent);
+    fixture = TestBed.createComponent(reservoirOfRequestsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

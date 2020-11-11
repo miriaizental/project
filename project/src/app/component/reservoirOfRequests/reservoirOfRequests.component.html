@@ -1,0 +1,10 @@
+<div>
+<button routerLink="/signin">בקש עזרה</button>
+<button routerLink="/signup">משתמש חדש</button>
+</div>
+<div>סך הכל {{this.requests.length}} בקשות ממתינות</div>
+<div *ngFor="let req of this.requests" class="x">
+    <span>{{req.city}}, באופן {{req.time}}</span><br>
+    <span>{{req.requestDetails}}</span>
+    <button>פרטים נוספים</button>
+</div>
