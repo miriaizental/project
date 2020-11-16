@@ -41,8 +41,10 @@ export class CreatenewcallComponent implements OnInit {
       call.street = this.createNewCallForm.controls['street'].value
       call.city = this.createNewCallForm.controls['city'].value
 
-      this.Volunteeringservice.createNewCall(call).subscribe(()=>{this.route.navigate(['/'])});
-      
+      this.Volunteeringservice.createNewCall(call).subscribe((data)=>{
+        alert('בקשתך נכנסה למאגר');
+        this.route.navigate(['/'])
+      })
     }
     else {
       this.createNewCallForm.markAllAsTouched();

@@ -18,9 +18,8 @@
 
     <div>
       <label for="password">ססמה:</label>
-      <input id="password" type="text" formControlName="password" maxlength="10">
-      <div>{{signUpForm.controls['password'].errors?.passwordError==null}}</div>
-      <div class="error" *ngIf="signUpForm.controls['password'].errors?.passwordError!=null">ססמה תפוסה</div>
+      <input id="password" type="text" formControlName="password" maxlength="10" (change)="checkPassword()">
+      <div class="error" *ngIf="this.checkpassword">ססמה תפוסה</div>
       <div class="error" *ngIf="signUpForm.controls['password'].errors?.required!=null&&signUpForm.controls['password'].touched==true">שדה זה הוא שדה חובה</div>
     </div>
 

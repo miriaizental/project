@@ -11,20 +11,24 @@ import { Router } from '@angular/router';
 export class reservoirOfRequestsComponent implements OnInit {
 
   requests: Array<AskForHelp>
-  
-  constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) { 
-    
+
+  constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) {
+
   }
 
   ngOnInit(): void {
+    this.requests = new Array<AskForHelp>()
     this.volunteeringservice.getAllRequests().subscribe((ans) => {
-      this.requests = new Array<AskForHelp>()
-      ans.forEach((x)=>{
+      ans.forEach((x) => {
         console.log(x);
         this.requests.push(x)
       })
     });
+
+  }
+
+  getDetails() {
     
   }
-  
+
 }
