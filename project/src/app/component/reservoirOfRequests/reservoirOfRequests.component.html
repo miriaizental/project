@@ -1,13 +1,22 @@
 <div>
-<button routerLink="/signin">בקש עזרה</button>
-<button routerLink="/signup">משתמש חדש</button>
+    <button routerLink="/signin">בקש עזרה</button>
+    <button routerLink="/signup">משתמש חדש</button>
 </div>
 <div>סך הכל {{this.requests.length}} בקשות ממתינות</div>
+
+
 <div *ngFor="let req of this.requests" class="x">
+    <div class="un">{{req.userName}}</div>
     <span>{{req.city}}, באופן {{req.time}}</span><br>
     <span>{{req.requestDetails}}</span>
-    <button (click)="getDetails()">פרטים נוספים</button>
-    <div>
-        <span></span>
+
+    <div *ngIf="!this.isshown[req.requestNumber]">
+        <button (click)='getDetails(req.requestNumber)'>פרטים נוספים</button>
     </div>
+
+    <div *ngIf="this.isshown[req.requestNumber]" class="details">
+        <div>כתובת: {{req.street}}</div>
+        <button (click)="response(req.requestNumber)">מענה לבקשה</button>
+    </div>
+
 </div>

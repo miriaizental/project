@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private route:Router) { }
 
   ngOnInit(): void {
-    this.route.navigate(["/askforhelp"])
+    
   }
 
   askForHelp(){
@@ -21,6 +21,5 @@ export class HomeComponent implements OnInit {
 
   signup(){
     this.route.navigate(["/signup"])
-
   }
 }

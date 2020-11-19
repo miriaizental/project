@@ -1,9 +1,11 @@
 const dal = require("../dal/dal.js")
 const tableName = 'AsksForHelp_tbl'
 
-async function getAllRequests(request, response) {
-    const query = `SELECT * FROM  ${tableName}`
+async function GetAllRequests(request, response) {
+    const query = `select requestNumber,requestDetails,AsksForHelp_tbl.password,AsksForHelp_tbl.city,street,time,requestGranted,userName,phone,restriction
+     from ${tableName} join Users_tbl on Users_tbl.password=AsksForHelp_tbl.password`
     console.log(query);
+    
     await dal.executeAsync(query, request.body, response).then((data) => {
 
         response.send(data)
@@ -12,6 +14,8 @@ async function getAllRequests(request, response) {
         .catch((err) => console.log('err from catch: ' + err))
 }
 
+
 module.exports = {
-    getAllRequests
+    GetAllRequests,
+    GetDetails
 }

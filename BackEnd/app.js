@@ -5,9 +5,12 @@ const cors = require('cors')
 const ask_for_help_route = require("./routes/AskForHelp.route");
 const sign_up_route = require('./routes/SignUp.route')
 const sign_in_route = require('./routes/SignIn.route')
-const reservoir_of_requests=require('./routes/reservoirOfRequests.route')
+const reservoir_of_requests = require('./routes/reservoirOfRequests.route')
 
+const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyBQ15dTEVyPYF67jF4omi6YBx3CIFFO2oA'
 
+});
 
 app.use(cors())
 app.use(bd.json())

@@ -1,5 +1,5 @@
 export class AskForHelp{
-    requestNamber:string;
+    requestNumber:number;
     requestDetails:string;
     password:string;
     requestGranted:boolean;
