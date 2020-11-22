@@ -26,20 +26,6 @@ function executeAsync(query, values, res) {
     })
 }
 
-// function executeAsync(query, values, res) {
-
-//     sql.connect(config, function (err) {
- 
-//         if (err) console.log("first"+err);
-//         var request = new sql.Request();
-//         request.query(query, function (err, recordset) {
-//             if (err) console.log(err)
-//             return recordset
-            
-//         });
-//     });
-// };
-
 
 module.exports = {
     executeAsync

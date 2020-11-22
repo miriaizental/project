@@ -4,7 +4,6 @@ const tableName = 'AsksForHelp_tbl'
 async function GetAllRequests(request, response) {
     const query = `select requestNumber,requestDetails,AsksForHelp_tbl.password,AsksForHelp_tbl.city,street,time,requestGranted,userName,phone,restriction
      from ${tableName} join Users_tbl on Users_tbl.password=AsksForHelp_tbl.password`
-    console.log(query);
     
     await dal.executeAsync(query, request.body, response).then((data) => {
 
@@ -16,6 +15,5 @@ async function GetAllRequests(request, response) {
 
 
 module.exports = {
-    GetAllRequests,
-    GetDetails
+    GetAllRequests
 }

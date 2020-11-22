@@ -8,17 +8,18 @@
 </head>
 
 <body>
+  <h2>יצירת חשבון</h2>
   <form [formGroup]="signUpForm" (submit)="sendData()">
 
     <div>
       <label for="name">שם משתמש:</label>
-      <input id="name" type="text" formControlName="userName" >
+      <input id="name" type="text" formControlName="userName" placeholder="אז איך אמרת שקוראים לך?">
       <div class="error" *ngIf="signUpForm.controls['userName'].errors?.required!=null&&signUpForm.controls['userName'].touched==true">שדה זה הוא שדה חובה</div>
     </div>
 
     <div>
       <label for="password">ססמה:</label>
-      <input id="password" type="text" formControlName="password" maxlength="10" (change)="checkPassword()">
+      <input id="password" type="text" formControlName="password" maxlength="10" (change)="checkPassword()" >
       <div class="error" *ngIf="signUpForm.controls['password'].errors?.required!=null&&signUpForm.controls['password'].touched==true">שדה זה הוא שדה חובה</div>
       <div class="error" *ngIf="signUpForm.controls['password'].errors?.pattern!=null&&signUpForm.controls['password'].touched==true">בחר סיסמה המורכבת ממספרים ואותיות בלבד</div>
       <div class="error" *ngIf="signUpForm.controls['password'].errors?.minlength!=null&&signUpForm.controls['password'].touched==true">בחר סיסמה באורך 6 תווים לפחות</div>
@@ -28,7 +29,7 @@
 
     <div>
       <label for="phone" >טלפון:</label>
-      <input id="phone" type="text" formControlName="phone" maxlength="10">
+      <input id="phone" type="text" formControlName="phone" maxlength="10" >
       <div class="error" *ngIf="signUpForm.controls['phone'].errors?.required!=null&&signUpForm.controls['phone'].touched==true">שדה זה הוא שדה חובה</div>
       <div class="error" *ngIf="signUpForm.controls['phone'].errors?.minlength!=null"> אורך מינימלי 9 ספרות </div>
       <div class="error" *ngIf="signUpForm.controls['phone'].errors?.pattern!=null">ספרות בלבד</div>
@@ -50,6 +51,7 @@
     <input type="submit" value="הרשם">
 
   </form>
+  <div><a [routerLink]="['/signin']">כבר נרשמת לכאן? התחבר/י</a></div>
 </body>
 
 </html>

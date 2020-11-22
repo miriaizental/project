@@ -4,6 +4,7 @@ import { SignupComponent } from 'src/app/component/signup/signup.component';
 import { SigninComponent } from 'src/app/component/signin/signin.component';
 import { CreatenewcallComponent } from 'src/app/component/createnewcall/createnewcall.component';
 import { reservoirOfRequestsComponent } from 'src/app/component/reservoirOfRequests/reservoirOfRequests.component';
+import { AskforhelpComponent } from 'src/app/component/askforhelp/askforhelp.component'
 import { AppComponent } from 'src/app/app.component'
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'createnewcall', component: CreatenewcallComponent },
+  { path: 'askforhelp', component: AskforhelpComponent },
 ];
 
 @NgModule({

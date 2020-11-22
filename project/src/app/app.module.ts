@@ -9,6 +9,7 @@ import { SigninComponent } from './component/signin/signin.component';
 import { reservoirOfRequestsComponent } from './component/reservoirOfRequests/reservoirOfRequests.component';
 import { CreatenewcallComponent } from './component/createnewcall/createnewcall.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AskforhelpComponent } from './component/askforhelp/askforhelp.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SigninComponent,
     reservoirOfRequestsComponent,
     CreatenewcallComponent,
+    AskforhelpComponent,
     
   ],
   imports: [

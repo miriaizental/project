@@ -1,0 +1,16 @@
+.state{
+    padding-top: 15px;
+    font-size: small;
+}
+.req{
+    border-color:black;
+    border: 2px;
+    border-style: solid;
+    padding: 20px;
+    margin: 5px;
+
+}
+#removerequest{
+   
+    font-size: x-small;
+}

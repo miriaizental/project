@@ -43,7 +43,7 @@ export class CreatenewcallComponent implements OnInit {
 
       this.Volunteeringservice.createNewCall(call).subscribe((data)=>{
         alert('בקשתך נכנסה למאגר');
-        this.route.navigate(['/'])
+        this.route.navigate(['/askforhelp'])
       })
     }
     else {

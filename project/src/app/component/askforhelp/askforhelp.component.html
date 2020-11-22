@@ -1,0 +1,19 @@
+<button [routerLink]="['/createnewcall']">בקשה חדשה</button>
+<h5>בקשות שביקשת לאחרונה</h5>
+
+<div *ngFor="let ureq of this.userRequests" class="req">
+    <div>
+        <span>{{ureq.requestDetails}}</span><br>
+    </div>
+
+    <div class="state">
+        <span *ngIf="ureq.requestGranted; else wait">בקשה בטיפול</span>
+
+        <ng-template #wait>
+            <span>הבקשה ממתינה לטיפול</span> <br>
+            <a href="javascript:void(0)" (click)="RemoveRequest(ureq.requestNumber)" id="removerequest">הסר מרשימת
+                הבקשות</a>
+        </ng-template>
+    </div>
+
+</div>

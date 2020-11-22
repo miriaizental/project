@@ -25,11 +25,9 @@ export class SigninComponent implements OnInit {
   send() {
     if (this.signInForm.valid) {
       this.volunteeringservice.SignIn(this.signInForm.controls.userName.value, this.signInForm.controls.password.value).subscribe((data) => {
-        console.log(data);
         if (data) {
           this.volunteeringservice.logIn=this.signInForm.controls.password.value
-          console.log('login: '+this.volunteeringservice.logIn);
-          this.route.navigate(['/createnewcall'])
+          this.route.navigate(['/askforhelp'])
         }
         else{
           alert('שם משתמש או סיסמה שגויים')
