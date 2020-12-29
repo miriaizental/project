@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -35,14 +36,16 @@ export class CreatenewcallComponent implements OnInit {
 
     if (this.createNewCallForm.valid) {
       let call = new AskForHelp()
-      call.password = this.Volunteeringservice.logIn
+      call.password = localStorage.getItem("login")
       call.requestDetails = this.createNewCallForm.controls['details'].value
       call.time = this.createNewCallForm.controls['time'].value
       call.street = this.createNewCallForm.controls['street'].value
       call.city = this.createNewCallForm.controls['city'].value
 
       this.Volunteeringservice.createNewCall(call).subscribe((data)=>{
-        alert('בקשתך נכנסה למאגר');
+
+        
+        alert(data["MESSAGE"]);
         this.route.navigate(['/askforhelp'])
       })
     }

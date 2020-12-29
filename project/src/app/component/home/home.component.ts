@@ -1,6 +1,9 @@
 import { Route } from '@angular/compiler/src/core';
+import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,17 +12,23 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) { }
 
   ngOnInit(): void {
-    
+
   }
 
-  askForHelp(){
-    this.route.navigate(["/signin"])
+  askForHelp() {
+
+    if (localStorage.getItem("login")== ""){
+      this.route.navigate(['/signin'])
+    }
+    else{
+      this.route.navigate(['/askforhelp'])
+    }
   }
 
-  signup(){
+  signup() {
     this.route.navigate(["/signup"])
   }
 }

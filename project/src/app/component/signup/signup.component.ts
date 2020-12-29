@@ -54,8 +54,9 @@ export class SignupComponent implements OnInit {
       user.restriction = this.signUpForm.controls.restriction.value
 
       this.volunteeringservice.SignUp(user).subscribe((data) => {
-        alert('ok')
-        this.route.navigate(['/'])
+        localStorage.setItem("login",user.password)
+        alert('נרשמת בהצלחה למערכת')
+        this.route.navigate(['/askforhelp'])
       });
 
     }

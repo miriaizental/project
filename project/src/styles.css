@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+input,select{
+    margin:5px
+}
+span{
+    font-size: small;
+}
+div{
+    font-size: 15px;
+}
 body{
     direction: rtl;
-    font-size: large;
+    font-size: small;
+
 }
 button{
     font-size: large;
@@ -10,5 +20,8 @@ button{
     
 }
 .error{
-    font-size:13px;
+    color: red;
+    font-size:x-small;
+    margin: 0px;
+    padding: 0px;
 }

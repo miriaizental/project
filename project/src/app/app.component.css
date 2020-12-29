@@ -1,0 +1,18 @@
+#home{
+    font-size: small;
+    width: min-content;
+}
+#prev{
+    font-size: small;
+    width: max-content;
+}
+#help{
+    position: absolute;
+    left: 10px;
+    font-size: small;
+    width: min-content; 
+}
+div{
+    margin-bottom: 30px;
+    background-color: rgb(194, 190, 190);
+}

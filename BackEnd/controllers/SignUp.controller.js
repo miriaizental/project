@@ -23,12 +23,12 @@ function CreateNewUser(request, response) {
 
 
 async function CheckPassword(request, response) {
-    const query = `SELECT ISNULL((SELECT password FROM  ${tableName} WHERE password='${request.query.password}'),0)`
+    const query = `SELECT ISNULL((SELECT password FROM  ${tableName} WHERE password='${request.query.password}'),0) as password`
     console.log(query);
     await dal.executeAsync(query, request.body, response).then((data) => {
 
         console.log('data from CheckPassword: ' + JSON.stringify(data))
-        if (JSON.stringify(data) == '[{"":"0"}]')
+        if (data[0].password == "0")
             response.send(true)
         else
             response.send(false)

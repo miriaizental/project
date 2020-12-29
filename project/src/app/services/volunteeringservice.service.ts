@@ -3,37 +3,47 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { AskForHelp } from '../models/askForHelp';
+import { JsonPipe } from '@angular/common';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class VolunteeringserviceService {
 
-  logIn: string
-
   options = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
   url = "http://localhost:3000"
+  logIn
+
   constructor(private http: HttpClient) {
-    this.logIn = ''
+    this.logIn = localStorage.getItem("login")
+
+  }
+
+
+
+  updateRequestGranted(requestnumber: number): Observable<string> {
+    return this.http.post<string>(`${this.url}/api/updateRequestGranted`, { "requestnumber": requestnumber }, this.options)
   }
 
   getAllRequests(): Observable<AskForHelp[]> {
     return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`)
   }
 
-  createNewCall(call: AskForHelp): Observable<string> {
-    return this.http.post<string>(`${this.url}/api/createNewCall`, call, this.options)
+  createNewCall(call: AskForHelp): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/createNewCall`, call, this.options)
   }
 
-  removeRequest(requestnumber:number):Observable<string>{
-    return this.http.post<string>(`${this.url}/api/removeRequest`,{"requestnumber":requestnumber}, this.options)
+  removeRequest(requestnumber: number): Observable<string> {
+    return this.http.post<string>(`${this.url}/api/removeRequest`, { "requestnumber": requestnumber }, this.options)
   }
 
   getUserRequests(): Observable<Array<Object>> {
-    return this.http.get<Array<Object>>(`${this.url}/api/getUserRequests`, { params: { password: this.logIn } })
+    return this.http.get<Array<Object>>(`${this.url}/api/getUserRequests`, { params: { password: localStorage.getItem("login") } })
   }
 
 
@@ -51,6 +61,10 @@ export class VolunteeringserviceService {
 
   SignUp(user: User): Observable<string> {
     return this.http.post<string>(`${this.url}/api/signUp`, user, this.options)
+  }
+
+  RequestWasGranted(requestNumber: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.url}/api/requestWasGranted`, { params: { requestNumber: requestNumber.toString() } })
   }
 
 }

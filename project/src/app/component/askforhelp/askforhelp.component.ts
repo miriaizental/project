@@ -32,7 +32,7 @@ export class AskforhelpComponent implements OnInit {
     var answer = window.confirm("האם אתה בטוח שהינך רוצה להסיר בקשה זו?")
     if (answer) {
       this.Volunteeringservice.removeRequest(reqnum).subscribe((data) => {
-        alert("בקשתך הוסרה מהמאגר")
+        //alert("בקשתך הוסרה מהמאגר")
         this.UserRequest()
         
       })

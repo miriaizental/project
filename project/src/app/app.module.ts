@@ -10,6 +10,7 @@ import { reservoirOfRequestsComponent } from './component/reservoirOfRequests/re
 import { CreatenewcallComponent } from './component/createnewcall/createnewcall.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AskforhelpComponent } from './component/askforhelp/askforhelp.component';
+import { RequestinmycareComponent } from './component/requestinmycare/requestinmycare.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AskforhelpComponent } from './component/askforhelp/askforhelp.component
     reservoirOfRequestsComponent,
     CreatenewcallComponent,
     AskforhelpComponent,
+    RequestinmycareComponent,
     
   ],
   imports: [

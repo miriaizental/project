@@ -4,11 +4,9 @@ tableName = "Users_tbl"
 
 function SignIn(request, response) {
 
-    const query = `SELECT ISNULL((SELECT password FROM ${tableName} WHERE password='${request.query.password}' AND userName='${request.query.userName}'),0)`
+    const query = `SELECT ISNULL((SELECT password FROM ${tableName} WHERE password='${request.query.password}' AND userName='${request.query.userName}'),0) as password`
     dal.executeAsync(query, request.body, response).then((data) => {
-
-        console.log('data from SignIn: ' + JSON.stringify(data))
-        if (JSON.stringify(data) == '[{"":"0"}]')
+        if (data[0].password == "0")
             response.send(false)
         else
             response.send(true)
