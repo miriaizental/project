@@ -10,7 +10,7 @@ const reservoir_of_requests = require('./routes/reservoirOfRequests.route')
 
 
 // const googleMapsClient = require('@google/maps').createClient({
-//     key: ''
+//     key: 'AIzaSyBQ15dTEVyPYF67jF4omi6YBx3CIFFO2oA'
 // });
 
 // function getDirections(req, callback) {

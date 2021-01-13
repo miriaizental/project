@@ -26,8 +26,8 @@ export class VolunteeringserviceService {
 
 
 
-  updateRequestGranted(requestnumber: number): Observable<string> {
-    return this.http.post<string>(`${this.url}/api/updateRequestGranted`, { "requestnumber": requestnumber }, this.options)
+  updateRequestGranted(requestnumber: number): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/updateRequestGranted`, { "requestnumber": requestnumber }, this.options)
   }
 
   getAllRequests(): Observable<AskForHelp[]> {
@@ -38,8 +38,8 @@ export class VolunteeringserviceService {
     return this.http.post<JSON>(`${this.url}/api/createNewCall`, call, this.options)
   }
 
-  removeRequest(requestnumber: number): Observable<string> {
-    return this.http.post<string>(`${this.url}/api/removeRequest`, { "requestnumber": requestnumber }, this.options)
+  removeRequest(requestnumber: number): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/removeRequest`, { "requestnumber": requestnumber }, this.options)
   }
 
   getUserRequests(): Observable<Array<Object>> {
@@ -47,24 +47,25 @@ export class VolunteeringserviceService {
   }
 
 
-  SignIn(userName: string, password: string): Observable<boolean> {
+  SignIn(userName: string, password: string): Observable<JSON> {
     let data = {
       'password': password,
       'userName': userName
     }
-    return this.http.get<boolean>(`${this.url}/api/signIn`, { params: data })
+    return this.http.get<JSON>(`${this.url}/api/signIn`, { params: data })
   }
 
-  checkPassword(password: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.url}/api/checkPassword`, { params: { password: password } })
+  checkPassword(password: string): Observable<JSON> {
+    return this.http.get<JSON>(`${this.url}/api/checkPassword`, { params: { password: password } })
   }
 
-  SignUp(user: User): Observable<string> {
-    return this.http.post<string>(`${this.url}/api/signUp`, user, this.options)
+  SignUp(user: User): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/signUp`, user, this.options)
+    
   }
 
-  RequestWasGranted(requestNumber: number): Observable<boolean> {
-    return this.http.get<boolean>(`${this.url}/api/requestWasGranted`, { params: { requestNumber: requestNumber.toString() } })
+  RequestWasGranted(requestNumber: number): Observable<JSON> {
+    return this.http.get<JSON>(`${this.url}/api/requestWasGranted`, { params: { requestNumber: requestNumber.toString() } })
   }
 
 }

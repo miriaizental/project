@@ -31,8 +31,8 @@ export class SignupComponent implements OnInit {
 
   checkPassword(): void {
     let val = this.signUpForm.controls.password.value
-    this.volunteeringservice.checkPassword(val).subscribe((val) => {
-      if (val == false) {
+    this.volunteeringservice.checkPassword(val).subscribe((data) => {
+      if (data['DATA'] == false) {
         this.checkpassword = false
       }
       else {
@@ -54,9 +54,14 @@ export class SignupComponent implements OnInit {
       user.restriction = this.signUpForm.controls.restriction.value
 
       this.volunteeringservice.SignUp(user).subscribe((data) => {
-        localStorage.setItem("login",user.password)
-        alert('נרשמת בהצלחה למערכת')
-        this.route.navigate(['/askforhelp'])
+
+
+        if (data['STATUS'] == 'SUCCESS') {
+          localStorage.setItem("login", user.password)
+          this.route.navigate(['/askforhelp'])
+        }
+        alert(data['MESSAGE'])
+
       });
 
     }

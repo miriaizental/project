@@ -1,5 +1,5 @@
 const dal = require("../dal/dal.js")
-const { successResponse } = require("../common/service.js")
+const { successResponse, failureResponse } = require("../common/service.js")
 
 
 tableName = "Users_tbl"
@@ -11,8 +11,9 @@ function CreateNewUser(request, response) {
 
     const query = `INSERT INTO ${tableName} VALUES('${user.password}','${user.userName}','${user.phone}','${user.city}','${user.restriction}')`
     dal.executeAsync(query, request.body, response).then((data) => {
-        response.send()
-    }, (err) => console.log('err from CreateNewUser: ' + err))
+
+        successResponse('  נרשמת בהצלחה למערכת', data, response).send()
+    }, (err) => failureResponse('ארעה שגיאה בעת ההרשמה למערכת /n אנא נסה שנית', err, response).send())
         .catch((err) => console.log('err from catch: ' + err))
 
 }
@@ -29,11 +30,11 @@ async function CheckPassword(request, response) {
 
         console.log('data from CheckPassword: ' + JSON.stringify(data))
         if (data[0].password == "0")
-            response.send(true)
+            successResponse('סיסמא מאושרת', true, response).send()
         else
-            response.send(false)
+            successResponse(' הסיסמא קיימת כבר במערכת', false, response).send()
 
-    }, (err) => console.log('err from CheckPassword: ' + err))
+    }, (err) =>  failureResponse('ארעה שגיאה בעת בדיקת הסיסמה', err, response).send() )
         .catch((err) => console.log('err from catch: ' + err))
 }
 module.exports = {

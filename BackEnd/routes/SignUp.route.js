@@ -11,7 +11,7 @@ function route(app) {
     })
 
     app.post("/api/signUp", (req, res) => {
-        var result = SignupController.CreateNewUser(req, res);
+         SignupController.CreateNewUser(req, res);
     })
 }
 

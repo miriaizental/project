@@ -2,7 +2,7 @@
 <div id="sum">סך הכל {{this.requests.length}} בקשות ממתינות</div>
 
 
-<div *ngFor="let req of this.requests" class="x">
+<div *ngFor="let req of requests" class="x">
     <div class="un">{{req.userName}}</div>
     <span>{{req.city}}, באופן {{req.time}}</span><br>
     <div>{{req.requestDetails}}</div>

@@ -8,8 +8,8 @@ async function CreateNewCall(request, response) {
 
     const query = `INSERT INTO ${table_name} VALUES('${call.requestDetails}','${call.password}','${call.city}','${call.street}','${call.time}',0,GETDATE())`
     await dal.executeAsync(query, request.body, response).then((data) => {
-        return successResponse('בקשתך נכנסה למאגר', data, response)
-    }, (err) => { return failureResponse('ארעה שגיאה', err, response)})
+        successResponse('בקשתך נכנסה למאגר', data, response).send()
+    }, (err) => failureResponse('ארעה שגיאה', err, response).send())
         .catch((err) => console.log('err from catch: ' + err))
 
 }
@@ -32,8 +32,8 @@ async function RemoveRequest(request, response) {
     const query = `delete from ${table_name} where requestNumber=${x.requestnumber}`
     console.log(query);
     await dal.executeAsync(query, request.body, response).then((data) => {
-        response.send()
-    }, (err) => console.log('err from RemoveRequest: ' + err))
+        successResponse('בקשתך נמחקה מהמאגר', data, response).send()
+    }, (err) => failureResponse('ארעה שגיאה', err, response).send())
         .catch((err) => console.log('err from catch: ' + err))
 
 }

@@ -15,7 +15,7 @@ export class SigninComponent implements OnInit {
   constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) { }
 
   ngOnInit(): void {
-    
+
     this.signInForm = new FormGroup({
       userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -26,12 +26,13 @@ export class SigninComponent implements OnInit {
   send() {
     if (this.signInForm.valid) {
       this.volunteeringservice.SignIn(this.signInForm.controls.userName.value, this.signInForm.controls.password.value).subscribe((data) => {
-        if (data) {
-          localStorage.setItem("login",this.signInForm.controls.password.value)
+        if (data['DATA']) {
+          localStorage.setItem("login", this.signInForm.controls.password.value)
           this.route.navigate(['/askforhelp'])
         }
-        else{
-          alert('שם משתמש או סיסמה שגויים')
+        else {
+          alert(data['MESSAGE'])
+          this.signInForm.reset()
         }
       })
 
