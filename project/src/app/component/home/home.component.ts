@@ -20,15 +20,21 @@ export class HomeComponent implements OnInit {
 
   askForHelp() {
 
-    if (localStorage.getItem("login")== ""){
+    if (localStorage.getItem("login") == "") {
       this.route.navigate(['/signin'])
     }
-    else{
+    else {
       this.route.navigate(['/askforhelp'])
     }
   }
 
   signup() {
-    this.route.navigate(["/signup"])
+    var x = window.confirm("האם הינך רוצה להרשם כמתנדב או לבקשת עזרה?")
+    if (x)
+      this.route.navigate(["/signup"])
+    else
+    this.route.navigate(["/volunteersignup"])
+
   }
+
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { AskForHelp } from '../models/askForHelp';
 import { JsonPipe } from '@angular/common';
+import { VolunteerSignUp } from '../models/VolunteerSignUp';
 
 
 
@@ -18,9 +19,15 @@ export class VolunteeringserviceService {
 
   url = "http://localhost:3000"
   logIn
+  ipAddress
 
   constructor(private http: HttpClient) {
     this.logIn = localStorage.getItem("login")
+    this.http.get('https://jsonip.com').subscribe((ipOfNetwork)=>{
+      this.ipAddress=ipOfNetwork['ip']
+      console.log("ip:",this.ipAddress);
+      
+    })
 
   }
 
@@ -61,6 +68,10 @@ export class VolunteeringserviceService {
 
   SignUp(user: User): Observable<JSON> {
     return this.http.post<JSON>(`${this.url}/api/signUp`, user, this.options)
+    
+  }
+  VolunteerSignUp(volunteersignup: VolunteerSignUp): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/volunteersignup`, volunteersignup, this.options)
     
   }
 

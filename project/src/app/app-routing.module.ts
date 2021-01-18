@@ -7,6 +7,7 @@ import { AskforhelpComponent } from 'src/app/component/askforhelp/askforhelp.com
 import { AppComponent } from 'src/app/app.component'
 import { HomeComponent } from './component/home/home.component';
 import {RequestinmycareComponent} from './component/requestinmycare/requestinmycare.component'
+import { VolunteersignupComponent } from './component/volunteersignup/volunteersignup.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'createnewcall', component: CreatenewcallComponent },
   { path: 'askforhelp', component: AskforhelpComponent },
   { path: 'requestinmycare', component: RequestinmycareComponent },
+  {path:'volunteersignup',component:VolunteersignupComponent} 
 ];
 
 @NgModule({

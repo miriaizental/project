@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>יצירת חשבון מתנדב</h2>
+    <form [formGroup]="volunteerSignUpForm" (submit)="sendData()">
+  
+      <div>
+        <label for="name">שם משתמש:</label>
+        <input id="name" type="text" formControlName="userName" placeholder="אז איך אמרת שקוראים לך?">
+        <div class="error" *ngIf="volunteerSignUpForm.controls['userName'].errors?.required!=null&&volunteerSignUpForm.controls['userName'].touched==true">שדה זה הוא שדה חובה</div>
+      </div>
+  
+      <div>
+        <label for="password">ססמה:</label>
+        <input id="password" type="text" formControlName="password" maxlength="10" (change)="checkPassword()" placeholder="בחר סיסמה באורך 6 תוים לפחות">
+        <div class="error" *ngIf="volunteerSignUpForm.controls['password'].errors?.required!=null&&volunteerSignUpForm.controls['password'].touched==true">שדה זה הוא שדה חובה</div>
+        <div class="error" *ngIf="volunteerSignUpForm.controls['password'].errors?.pattern!=null&&volunteerSignUpForm.controls['password'].touched==true">בחר סיסמה המורכבת ממספרים ואותיות בלבד</div>
+        <div class="error" *ngIf="volunteerSignUpForm.controls['password'].errors?.minlength!=null&&volunteerSignUpForm.controls['password'].touched==true">בחר סיסמה באורך 6 תווים לפחות</div>
+        <div class="error" *ngIf="!this.checkpassword">ססמה תפוסה</div>
+  
+      </div>
+  
+      <div>
+        <label for="phone" >טלפון:</label>
+        <input id="phone" type="text" formControlName="phone" maxlength="10" placeholder="מספר הטלפון שלך">
+        <div class="error" *ngIf="volunteerSignUpForm.controls['phone'].errors?.required!=null&&volunteerSignUpForm.controls['phone'].touched==true">שדה זה הוא שדה חובה</div>
+        <div class="error" *ngIf="volunteerSignUpForm.controls['phone'].errors?.minlength!=null"> אורך מינימלי 9 ספרות </div>
+        <div class="error" *ngIf="volunteerSignUpForm.controls['phone'].errors?.pattern!=null">ספרות בלבד</div>
+        <div></div>
+      </div>
+  
+     
+  
+      
+  
+      <input type="submit" value="הרשם">
+  
+    </form>
+</body>
+</html>

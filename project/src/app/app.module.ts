@@ -11,6 +11,7 @@ import { CreatenewcallComponent } from './component/createnewcall/createnewcall.
 import { ReactiveFormsModule } from '@angular/forms';
 import { AskforhelpComponent } from './component/askforhelp/askforhelp.component';
 import { RequestinmycareComponent } from './component/requestinmycare/requestinmycare.component';
+import { VolunteersignupComponent } from './component/volunteersignup/volunteersignup.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RequestinmycareComponent } from './component/requestinmycare/requestinm
     CreatenewcallComponent,
     AskforhelpComponent,
     RequestinmycareComponent,
+    VolunteersignupComponent,
     
   ],
   imports: [
