@@ -16,7 +16,8 @@ export class VolunteersignupComponent implements OnInit {
   volunteerSignUpForm: FormGroup
   checkpassword: boolean
 
-  constructor(private route: Router, private volunteeringservice: VolunteeringserviceService) { }
+  constructor(private route: Router, private volunteeringservice: VolunteeringserviceService) {
+  }
 
   ngOnInit(): void {
     this.volunteerSignUpForm = new FormGroup({
@@ -51,14 +52,18 @@ export class VolunteersignupComponent implements OnInit {
       volunteersignup.password = this.volunteerSignUpForm.controls.password.value
       volunteersignup.userName = this.volunteerSignUpForm.controls.userName.value
       volunteersignup.phone = this.volunteerSignUpForm.controls.phone.value
-      volunteersignup.ipAddress=this.volunteeringservice.ipAddress
+      volunteersignup.ipAddress = this.volunteeringservice.ipAddress
 
       this.volunteeringservice.VolunteerSignUp(volunteersignup).subscribe((data) => {
 
 
         if (data['STATUS'] == 'SUCCESS') {
+
           localStorage.setItem("login", volunteersignup.password)
-          this.route.navigate(['/home'])
+
+         
+         this.route.navigate(['/home'])
+
         }
         alert(data['MESSAGE'])
 

@@ -7,6 +7,7 @@ const tableName = "Users_tbl"
 
 
 function CreateNewUser(request, response) {
+
     const user = request.body
 
     const query = `INSERT INTO ${tableName} VALUES('${user.password}','${user.userName}','${user.phone}','${user.city}','${user.restriction}')`
