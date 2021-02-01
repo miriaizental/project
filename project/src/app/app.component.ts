@@ -19,11 +19,11 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private location: Location, private route: Router, private vs: VolunteeringserviceService) {
     // getJSON('http://gd.geobytes.com/GetCityDetails',(data)=>{
     //   console.log(JSON.stringify(data,null,2));
-      
+
     // })
 
     console.log(
-    window.navigator)
+      window.navigator)
 
     if (this.location.path() == "") {
       this.route.navigate(['/home'])

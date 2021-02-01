@@ -36,15 +36,27 @@ export class CreatenewcallComponent implements OnInit {
 
     if (this.createNewCallForm.valid) {
       let call = new AskForHelp()
-      call.password = localStorage.getItem("login")
-      call.requestDetails = this.createNewCallForm.controls['details'].value
-      call.time = this.createNewCallForm.controls['time'].value
-      call.street = this.createNewCallForm.controls['street'].value
-      call.city = this.createNewCallForm.controls['city'].value
 
-      this.Volunteeringservice.createNewCall(call).subscribe((data)=>{
+      if (this.createNewCallForm.controls['location'].value == 'באופן ידני') {
+        call.password = localStorage.getItem("login")
+        call.requestDetails = this.createNewCallForm.controls['details'].value
+        call.time = this.createNewCallForm.controls['time'].value
+        call.street = this.createNewCallForm.controls['street'].value
+        call.city = this.createNewCallForm.controls['city'].value
+      }
+      else {
 
-        
+      }
+      // let call = new AskForHelp()
+      // call.password = localStorage.getItem("login")
+      // call.requestDetails = this.createNewCallForm.controls['details'].value
+      // call.time = this.createNewCallForm.controls['time'].value
+      // call.street = this.createNewCallForm.controls['street'].value
+      // call.city = this.createNewCallForm.controls['city'].value
+
+      this.Volunteeringservice.createNewCall(call).subscribe((data) => {
+
+
         alert(data["MESSAGE"]);
         this.route.navigate(['/askforhelp'])
       })
@@ -54,4 +66,6 @@ export class CreatenewcallComponent implements OnInit {
     }
   }
 
+
+  
 }

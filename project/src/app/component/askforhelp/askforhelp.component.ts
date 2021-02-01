@@ -30,7 +30,6 @@ export class AskforhelpComponent implements OnInit {
   }
 
   GetUserRequests() {
-    this.ws.close()
 
     this.userRequests = new Array<object>()
     this.Volunteeringservice.getUserRequests().subscribe((ans) => {
@@ -46,10 +45,6 @@ export class AskforhelpComponent implements OnInit {
     if (answer) {
       this.Volunteeringservice.removeRequest(reqnum).subscribe((data) => {
         this.ws.send()
-
-        this.GetUserRequests()
-        this.ws.connect()
-        // console.log(localStorage.getItem("login"));
 
       })
     }

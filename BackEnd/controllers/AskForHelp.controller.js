@@ -4,9 +4,12 @@ const { successResponse, failureResponse } = require("../common/service.js")
 const table_name = 'AsksForHelp_tbl'
 
 async function CreateNewCall(request, response) {
+    
+
     const call = request.body
 
-    const query = `INSERT INTO ${table_name} VALUES('${call.requestDetails}','${call.password}','${call.city}','${call.street}','${call.time}',0,GETDATE())`
+    const query = `INSERT INTO ${table_name} VALUES('${call.requestDetails}','${call.password}','${call.city}','${call.street}','${call.time}',0,GETDATE(),null)`
+    console.log(query);
     await dal.executeAsync(query, request.body, response).then((data) => {
         successResponse('בקשתך נכנסה למאגר', data, response).send()
     }, (err) => failureResponse('ארעה שגיאה', err, response).send())
@@ -39,9 +42,8 @@ async function RemoveRequest(request, response) {
 }
 
 
-
 module.exports = {
     CreateNewCall,
     GetUserRequests,
-    RemoveRequest
+    RemoveRequest,
 }

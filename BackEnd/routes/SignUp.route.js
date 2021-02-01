@@ -1,6 +1,6 @@
 const commonService = require("../common/service")
 const AskForHelpController = require("../controllers/AskForHelp.controller.js")
-const SignupController = require("../controllers/SignUp.controller")
+const SignupController = require("../controllers/SignUp.controller.js")
 
 function route(app) {
 
