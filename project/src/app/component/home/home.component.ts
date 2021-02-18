@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     this.volunteeringservice.getPosition().then(pos => {
       console.log(`Positon: ${pos.lng} ${pos.lat}`);
     });
-    this.volunteeringservice.GetAddress()
+    //this.volunteeringservice.GetAddress()
 
 
   }

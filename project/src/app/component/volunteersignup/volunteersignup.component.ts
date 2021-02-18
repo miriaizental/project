@@ -61,8 +61,8 @@ export class VolunteersignupComponent implements OnInit {
 
           localStorage.setItem("login", volunteersignup.password)
 
-         
          this.route.navigate(['/home'])
+
 
         }
         alert(data['MESSAGE'])

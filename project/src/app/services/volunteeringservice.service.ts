@@ -55,30 +55,30 @@ export class VolunteeringserviceService {
 
 
 
-  GetAddress() {
-    async function success(position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      var resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=` + latitude + `&lon=` + longitude + `&zoom=18&addressdetails=1`);
-      var state = await resp.json(); // כאן יש לך הכל
-      var country = state.address.country;
-      var city = state.address.city
-      var street = state.address.road;
-      var number = state.address.house_number;
-      var display_name = state.display_name
-      console.log('city',city, 'street',street,'number', number);
+  // GetAddress() {
+  //   async function success(position) {
+  //     const latitude = position.coords.latitude;
+  //     const longitude = position.coords.longitude;
+  //     var resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=` + latitude + `&lon=` + longitude + `&zoom=18&addressdetails=1`);
+  //     var state = await resp.json(); // כאן יש לך הכל
+  //     var country = state.address.country;
+  //     var city = state.address.city
+  //     var street = state.address.road;
+  //     var number = state.address.house_number;
+  //     var display_name = state.display_name
+  //     console.log('city',city, 'street',street,'number', number);
 
-    }
+  //   }
 
-    function error() {
-      console.log(error);
-    }
+  //   function error() {
+  //     console.log(error);
+  //   }
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(success, error);
+  //   }
 
-  }
+  // }
 
   ///////////////////////
 

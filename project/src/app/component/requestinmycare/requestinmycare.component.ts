@@ -19,16 +19,15 @@ export class RequestinmycareComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.GetvolunteerRequests()
+
   }
 
   GetvolunteerRequests() {
 
     this.requestsinmycare = new Array<object>()
     this.Volunteeringservice.getVolunteerRequests().subscribe((ans) => {
-      ans.forEach(element => {
-        this.requestsinmycare.push(element)
-      });
+        this.requestsinmycare=ans
     })
 
   }
