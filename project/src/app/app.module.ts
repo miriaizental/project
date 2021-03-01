@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AskforhelpComponent } from './component/askforhelp/askforhelp.component';
 import { RequestinmycareComponent } from './component/requestinmycare/requestinmycare.component';
 import { VolunteersignupComponent } from './component/volunteersignup/volunteersignup.component';
+import { LogupComponent } from './component/logup/logup.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { VolunteersignupComponent } from './component/volunteersignup/volunteers
     AskforhelpComponent,
     RequestinmycareComponent,
     VolunteersignupComponent,
+    LogupComponent,
     
   ],
   imports: [

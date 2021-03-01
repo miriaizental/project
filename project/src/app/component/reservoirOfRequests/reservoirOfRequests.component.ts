@@ -59,17 +59,33 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
     if (answer) {
       this.volunteeringservice.RequestWasGranted(requestNumber).subscribe(data => {
         if (data['DATA'] == 0) {
-          this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
-            // connection.send('refresh')
-            if (data['STATUS'] == 'SUCCESS') {
-              this.ws.send()
-              this.ws.close()
-              this.route.navigate(['/requestinmycare'])
-            }
-            else {
+
+          this.volunteeringservice.updateResponseDate(requestNumber).subscribe((data) => {
+            if (data['STATUS'] != 'SUCCESS')
               alert(data['MESSAGE'])
-            }
+              this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
+                // connection.send('refresh')
+                if (data['STATUS'] == 'SUCCESS') {
+                  this.ws.send()
+                  this.ws.close()
+                  this.route.navigate(['/requestinmycare'])
+                }
+                else {
+                  alert(data['MESSAGE'])
+                }
+              })
           })
+          // this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
+          //   // connection.send('refresh')
+          //   if (data['STATUS'] == 'SUCCESS') {
+          //     this.ws.send()
+          //     this.ws.close()
+          //     this.route.navigate(['/requestinmycare'])
+          //   }
+          //   else {
+          //     alert(data['MESSAGE'])
+          //   }
+          // })
         }
         else {
           alert("תודה על ההענות, אך בקשה זו כבר בטיפול")

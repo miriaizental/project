@@ -34,6 +34,13 @@
         <div></div>
       </div>
   
+      <div>
+        <label for="email" >דוא"ל:</label>
+        <input id="email" type="text" formControlName="email" placeholder="כתובת המייל שלך">
+        <div class="error" *ngIf="volunteerSignUpForm.controls['email'].errors?.required!=null&&volunteerSignUpForm.controls['email'].touched==true">שדה זה הוא שדה חובה</div>
+        <div class="error" *ngIf="volunteerSignUpForm.controls['phone'].errors?.email!=null">כתובת מייל לא חוקית</div>
+        <div></div>
+      </div>
      
   
       

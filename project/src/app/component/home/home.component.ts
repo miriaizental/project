@@ -21,13 +21,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    this.volunteeringservice.getPosition().then(pos => {
-      console.log(`Positon: ${pos.lng} ${pos.lat}`);
-    });
-    //this.volunteeringservice.GetAddress()
-
-
   }
 
 
@@ -43,19 +36,9 @@ export class HomeComponent implements OnInit {
 
   signup() {
 
-    this.Logout()
-    var x = window.confirm("האם הינך רוצה להרשם כמתנדב או לבקשת עזרה?")
-    if (x)
-      this.route.navigate(["/signup"])
-    else
-      this.route.navigate(["/volunteersignup"])
-
+    this.route.navigate(["/logup"])
 
   }
-  Logout() {
-    localStorage.setItem("login", "")
-    this.volunteeringservice.logIn = ''
-  }
-
+  
 
 }

@@ -72,7 +72,7 @@ export class CreatenewcallComponent implements OnInit {
 
 
         alert(data["MESSAGE"]);
-        this.ws.send()
+        //this.ws.send()
         // this.ws.close()
         //this.ws.connect()
         this.route.navigate(['/askforhelp'])

@@ -37,15 +37,24 @@ async function UpdateRequestGranted(request, response) {
 
     const query = `update ${tableName} set requestGranted=1,volunteerpassword='${request.body.login}' where requestNumber=${request.body.requestnumber} and requestGranted=0`
     await dal.executeAsync(query, request.body, response).then((result) => {
-        successResponse('הבקשה הועברה לטיפולך', result, response).send()
+        successResponse('העדכון התבצע', result, response).send()
     }, (err) => failureResponse('ארעה שגיאה', err, response).send())
         .catch((err) => console.log('err from catch: ' + err))
 
 }
+async function UpdateResponseDate(request, response) {
+    const query = `update ${tableName} set responseDate=GETDATE() where requestNumber=${request.body.requestnumber}`
+    await dal.executeAsync(query, request.body, response).then((result) => {
+        successResponse('העדכון התבצע', result, response).send()
+    }, (err) => failureResponse('ארעה שגיאה', err, response).send())
+        .catch((err) => console.log('err from catch: ' + err))
+}
+
 
 
 module.exports = {
     GetAllRequests,
     UpdateRequestGranted,
     RequestWasGranted,
+    UpdateResponseDate
 }
