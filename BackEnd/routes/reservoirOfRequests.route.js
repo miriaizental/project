@@ -13,6 +13,10 @@ function route(app) {
         reservoirOfRequestsController.UpdateRequestGranted(req, res)
     })
 
+    app.post("/api/updateResponseDate",(req,res)=>{
+        reservoirOfRequestsController.UpdateResponseDate(req,res)
+    })
+
     app.use("/api/allRequests", (req, res, next) => {
         //console.log(ip.address());
         next()

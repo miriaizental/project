@@ -14,6 +14,9 @@
             <a href="javascript:void(0)" (click)="RemoveRequest(ureq.requestNumber)" id="removerequest">הסר מרשימת
                 הבקשות</a>
         </ng-template>
+
     </div>
+    <a href="javascript:void(0)" *ngIf="ureq.requestGranted;">האם הבקשה בוצעה?</a>
+
 
 </div>

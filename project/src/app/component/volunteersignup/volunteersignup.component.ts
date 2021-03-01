@@ -23,8 +23,8 @@ export class VolunteersignupComponent implements OnInit {
     this.volunteerSignUpForm = new FormGroup({
       userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[-_a-zA-Zא-ת0-9]*')])),
-      phone: new FormControl('', Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern('^[0-9]*')]))
-
+      phone: new FormControl('', Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern('^[0-9]*')])),
+      email: new FormControl('',Validators.compose([Validators.required,Validators.email]))
 
     })
     this.checkpassword = true
@@ -52,6 +52,7 @@ export class VolunteersignupComponent implements OnInit {
       volunteersignup.password = this.volunteerSignUpForm.controls.password.value
       volunteersignup.userName = this.volunteerSignUpForm.controls.userName.value
       volunteersignup.phone = this.volunteerSignUpForm.controls.phone.value
+      volunteersignup.email=this.volunteerSignUpForm.controls.email.value
       volunteersignup.ipAddress = this.volunteeringservice.ipAddress
 
       this.volunteeringservice.VolunteerSignUp(volunteersignup).subscribe((data) => {
@@ -61,8 +62,8 @@ export class VolunteersignupComponent implements OnInit {
 
           localStorage.setItem("login", volunteersignup.password)
 
-         
-         this.route.navigate(['/home'])
+          this.route.navigate(['/home'])
+
 
         }
         alert(data['MESSAGE'])

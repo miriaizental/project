@@ -8,7 +8,7 @@ function CreateNewUser(request, response) {
  
     const user = request.body
 
-    const query = `INSERT INTO ${tableName} VALUES('${user.password}','${user.userName}','${user.phone}','${user.ipAddress}')`
+    const query = `INSERT INTO ${tableName} VALUES('${user.password}','${user.userName}','${user.phone}','${user.ipAddress}','${user.email}')`
     dal.executeAsync(query, request.body, response).then((data) => {
 
         successResponse('  נרשמת בהצלחה למערכת', data, response).send()

@@ -45,6 +45,8 @@ export class AskforhelpComponent implements OnInit {
     if (answer) {
       this.Volunteeringservice.removeRequest(reqnum).subscribe((data) => {
         this.ws.send()
+        //this.ws.connect()
+        this.ws.close()
 
       })
     }

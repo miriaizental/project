@@ -35,57 +35,35 @@ export class VolunteeringserviceService {
 
   }
   ///////////////
-  getPosition(): Promise<any> {
-    return new Promise((resolve, reject) => {
+  // getPosition(): Promise<any> {
+  //   return new Promise((resolve, reject) => {
 
-      navigator.geolocation.getCurrentPosition(resp => {
+  //     navigator.geolocation.getCurrentPosition(resp => {
 
 
-        resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
+  //       resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
 
-      },
-        err => {
-          reject(err);
-        });
-    });
+  //     },
+  //       err => {
+  //         reject(err);
+  //       });
+  //   });
 
-  }
+  // }
 
   /////////////////////////////////////////////////////////////////////////////////
 
 
 
-  GetAddress() {
-    async function success(position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      var resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=` + latitude + `&lon=` + longitude + `&zoom=18&addressdetails=1`);
-      var state = await resp.json(); // כאן יש לך הכל
-      var country = state.address.country;
-      var city = state.address.city
-      var street = state.address.road;
-      var number = state.address.house_number;
-      var display_name = state.display_name
-      console.log('city',city, 'street',street,'number', number);
 
-    }
-
-    function error() {
-      console.log(error);
-    }
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
-
-  }
-
-  ///////////////////////
 
 
 
   updateRequestGranted(requestnumber: number): Observable<JSON> {
     return this.http.post<JSON>(`${this.url}/api/updateRequestGranted`, { "requestnumber": requestnumber, "login": this.logIn }, this.options)
+  }
+  updateResponseDate(requestnumber:number):Observable<JSON>{
+    return this.http.post<JSON>(`${this.url}/api/updateResponseDate`,{ "requestnumber": requestnumber }, this.options)
   }
 
   getAllRequests(): Observable<AskForHelp[]> {

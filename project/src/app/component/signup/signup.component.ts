@@ -23,6 +23,7 @@ export class SignupComponent implements OnInit {
       userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[-_a-zA-Zא-ת0-9]*')])),
       phone: new FormControl('', Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern('^[0-9]*')])),
+      email:new FormControl('',Validators.compose([Validators.required,Validators.email])),
       city: new FormControl('', Validators.required),
       restriction: new FormControl('', Validators.required)
     })
@@ -50,6 +51,7 @@ export class SignupComponent implements OnInit {
       user.password = this.signUpForm.controls.password.value
       user.userName = this.signUpForm.controls.userName.value
       user.phone = this.signUpForm.controls.phone.value
+      user.email=this.signUpForm.controls.email.value
       user.city = this.signUpForm.controls.city.value
       user.restriction = this.signUpForm.controls.restriction.value
 
