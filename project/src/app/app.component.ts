@@ -14,14 +14,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   title = 'project';
-
+  login=localStorage.getItem("login");
 
   constructor(private location: Location, private route: Router, private vs: VolunteeringserviceService) {
     // getJSON('http://gd.geobytes.com/GetCityDetails',(data)=>{
     //   console.log(JSON.stringify(data,null,2));
 
     // })
-
     console.log(
       window.navigator)
 
@@ -32,17 +31,10 @@ export class AppComponent implements OnInit, OnDestroy {
     if (localStorage.getItem("login") == null) {
       localStorage.setItem("login", "")
     }
-
     console.log("login: " + localStorage.getItem("login"));
-
-
   }
-
-
-
   ngOnInit() {
   }
-
   ngOnDestroy() {
   }
 
@@ -53,12 +45,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   GoBack() {
     this.location.back()
-  }
-
-  IsLogedIn() {
-    if (localStorage.getItem("login") == '')
-      return false
-    return true
   }
 
 

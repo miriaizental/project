@@ -14,7 +14,7 @@ import { WebSocketServiceService } from 'src/app/services/web-socket-service.ser
 export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
 
   requests: Array<object>;
-
+  login=localStorage.getItem("login");
   constructor(private volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
 
 
@@ -56,6 +56,7 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
   response(requestNumber: number) {
 
     var answer = window.confirm(" מרגע זה הבקשה תעבור לטיפולך, האם הינך בטוח?")
+    debugger;
     if (answer) {
       this.volunteeringservice.RequestWasGranted(requestNumber).subscribe(data => {
         if (data['DATA'] == 0) {

@@ -15,7 +15,7 @@
         <div>כתובת: {{req.street}}</div>
     </div> -->
 
-    <button (click)="response(req.requestNumber)" class="requestsbutton">מענה לבקשה</button>
+    <button (click)="response(req.requestNumber)" class="requestsbutton" *ngIf="login&&login!=''">מענה לבקשה</button>
     <button class="requestsbutton">צור קשר עם {{req.userName}}</button>
 
 

@@ -13,8 +13,9 @@ import { VolunteeringserviceService } from 'src/app/services/volunteeringservice
 })
 export class HomeComponent implements OnInit {
 
+  login=localStorage.getItem("login");
   constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) {
-
+    
 
 
   }
@@ -34,11 +35,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  signup() {
-
-    this.route.navigate(["/logup"])
-
-  }
   
 
 }
