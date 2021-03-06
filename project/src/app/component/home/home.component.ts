@@ -14,7 +14,7 @@ import { VolunteeringserviceService } from 'src/app/services/volunteeringservice
 export class HomeComponent implements OnInit {
 
   login=localStorage.getItem("login");
-  constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) {
+  constructor(private vs: VolunteeringserviceService, private route: Router) {
     
 
 
@@ -22,6 +22,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  isLogedIn(){
+    if(this.vs.logIn && this.vs.logIn!='')
+      return true;
+    return false;
   }
 
 

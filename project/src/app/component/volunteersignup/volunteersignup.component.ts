@@ -16,7 +16,7 @@ export class VolunteersignupComponent implements OnInit {
   volunteerSignUpForm: FormGroup
   checkpassword: boolean
 
-  constructor(private route: Router, private volunteeringservice: VolunteeringserviceService) {
+  constructor(private route: Router, private vs: VolunteeringserviceService) {
   }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class VolunteersignupComponent implements OnInit {
 
   checkPassword(): void {
     let val = this.volunteerSignUpForm.controls.password.value
-    this.volunteeringservice.checkPassword(val).subscribe((data) => {
+    this.vs.checkPassword(val).subscribe((data) => {
       if (data['DATA'] == false) {
         this.checkpassword = false
       }
@@ -53,18 +53,16 @@ export class VolunteersignupComponent implements OnInit {
       volunteersignup.userName = this.volunteerSignUpForm.controls.userName.value
       volunteersignup.phone = this.volunteerSignUpForm.controls.phone.value
       volunteersignup.email=this.volunteerSignUpForm.controls.email.value
-      volunteersignup.ipAddress = this.volunteeringservice.ipAddress
+      volunteersignup.ipAddress = this.vs.ipAddress
 
-      this.volunteeringservice.VolunteerSignUp(volunteersignup).subscribe((data) => {
+      this.vs.VolunteerSignUp(volunteersignup).subscribe((data) => {
 
 
         if (data['STATUS'] == 'SUCCESS') {
 
           localStorage.setItem("login", volunteersignup.password)
-
+          this.vs.logIn= volunteersignup.password;
           this.route.navigate(['/home'])
-
-
         }
         alert(data['MESSAGE'])
 
