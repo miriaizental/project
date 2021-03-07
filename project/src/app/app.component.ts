@@ -40,7 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   Logout() {
     localStorage.setItem("login", "")
-    this.vs.logIn = ''
+    this.vs.logIn = '';
+    this.login='';
   }
 
   GoBack() {

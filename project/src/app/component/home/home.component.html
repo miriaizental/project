@@ -11,7 +11,7 @@
     <div *ngIf="login&&login!=''">
         <button [routerLink]="['/createnewcall']" class="userButton2">בקש עזרה</button>
         <button [routerLink]="['/askforhelp']" class="userButton2">הבקשות שלי</button>
-        <button [routerLink]="['/askforhelp']" class="userButton2">בקשות בטיפולי</button>
+        <button [routerLink]="['/requestinmycare']" class="userButton2">בקשות בטיפולי</button>
     </div>
     <div *ngIf="!login||login==''">
         <button [routerLink]="['/logup']" class="userButton">משתמש חדש</button>

@@ -19,7 +19,7 @@ async function RequestWasGranted(request, response) {
 //כל הקריאות
 
 async function GetAllRequests(request, response) {
-    const query = `select requestNumber,requestDetails,AsksForHelp_tbl.password,AsksForHelp_tbl.city,street,time,requestGranted,userName,phone,restriction
+    const query = `select requestNumber,requestDetails,AsksForHelp_tbl.password,AsksForHelp_tbl.city,street,time,requestGranted,userName,phone,restriction,email
      from ${tableName} join Users_tbl on Users_tbl.password=AsksForHelp_tbl.password WHERE requestGranted=0`
 
     await dal.executeAsync(query, request.body, response).then((data) => {
@@ -42,6 +42,9 @@ async function UpdateRequestGranted(request, response) {
         .catch((err) => console.log('err from catch: ' + err))
 
 }
+
+//מעדכן תאריך ענייה לבקשה
+
 async function UpdateResponseDate(request, response) {
     const query = `update ${tableName} set responseDate=GETDATE() where requestNumber=${request.body.requestnumber}`
     await dal.executeAsync(query, request.body, response).then((result) => {

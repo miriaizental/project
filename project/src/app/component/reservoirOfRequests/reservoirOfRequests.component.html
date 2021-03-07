@@ -16,7 +16,7 @@
     </div> -->
 
     <button (click)="response(req.requestNumber)" class="requestsbutton" *ngIf="login&&login!=''">מענה לבקשה</button>
-    <button class="requestsbutton">צור קשר עם {{req.userName}}</button>
+    <button (click)="contactUs(req.email)" class="requestsbutton">צור קשר עם {{req.userName}}</button>
 
 
 </div>

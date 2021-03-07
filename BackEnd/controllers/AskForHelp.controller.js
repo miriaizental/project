@@ -1,10 +1,19 @@
 const dal = require("../dal/dal.js")
+const nodemailer = require('nodemailer');
+const geoip = require('geoip-lite');
+
 const { successResponse, failureResponse } = require("../common/service.js")
 
 const table_name = 'AsksForHelp_tbl'
 
 async function CreateNewCall(request, response) {
-    
+
+    ////////////////////////////
+    var ip = "195.60.235.69"
+    var geo = geoip.lookup(ip);
+    console.log('geo',geo);
+    ////////////////////////////
+
 
     const call = request.body
 

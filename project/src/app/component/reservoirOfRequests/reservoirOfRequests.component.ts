@@ -14,7 +14,7 @@ import { WebSocketServiceService } from 'src/app/services/web-socket-service.ser
 export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
 
   requests: Array<object>;
-  login=localStorage.getItem("login");
+  login = localStorage.getItem("login");
   constructor(private volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
 
 
@@ -52,11 +52,9 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
   }
 
 
-
   response(requestNumber: number) {
 
     var answer = window.confirm(" מרגע זה הבקשה תעבור לטיפולך, האם הינך בטוח?")
-    debugger;
     if (answer) {
       this.volunteeringservice.RequestWasGranted(requestNumber).subscribe(data => {
         if (data['DATA'] == 0) {
@@ -64,17 +62,17 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
           this.volunteeringservice.updateResponseDate(requestNumber).subscribe((data) => {
             if (data['STATUS'] != 'SUCCESS')
               alert(data['MESSAGE'])
-              this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
-                // connection.send('refresh')
-                if (data['STATUS'] == 'SUCCESS') {
-                  this.ws.send()
-                  this.ws.close()
-                  this.route.navigate(['/requestinmycare'])
-                }
-                else {
-                  alert(data['MESSAGE'])
-                }
-              })
+            this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
+              // connection.send('refresh')
+              if (data['STATUS'] == 'SUCCESS') {
+                this.ws.send()
+                this.ws.close()
+                this.route.navigate(['/requestinmycare'])
+              }
+              else {
+                alert(data['MESSAGE'])
+              }
+            })
           })
           // this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
           //   // connection.send('refresh')
@@ -93,10 +91,13 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
         }
       })
     }
+  }
 
-
-
-
-
+  contactUs(email: string) {
+    var answer = window.confirm("המשתמש יקבל את כתובת המייל שלך על מנת ליצור איתך קשר\n האם הינך מוכן לצעד זה?")
+    if (answer) {
+      this.volunteeringservice.ContactUs(email).subscribe()
+      alert("פרטיך הועברו למשתמש , והוא ייצור איתך קשר בקרוב")
+    }
   }
 }

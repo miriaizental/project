@@ -10,13 +10,22 @@
 
     <!-- <p>signin works!</p> -->
     <form [formGroup]="signInForm" (submit)="send()">
-<h2>התחבר/י</h2>
+        <h2>התחבר/י</h2>
+        <div>
+            <label for="type">האם הינך מתנדב או משתמש? </label>
+            <select formControlName="type">
+                <option value="1">מתנדב</option>
+                <option value="2">משתמש</option>
+            </select>
+        </div>
         <div>
             <label for="name">
                 שם משתמש:
             </label>
             <input id="name" type="text" formControlName="userName">
-            <div class="error" *ngIf="signInForm.controls['userName'].errors?.required!=null&&signInForm.controls['userName'].touched==true">שדה זה הוא שדה חובה</div>
+            <div class="error"
+                *ngIf="signInForm.controls['userName'].errors?.required!=null&&signInForm.controls['userName'].touched==true">
+                שדה זה הוא שדה חובה</div>
 
         </div>
 
@@ -25,7 +34,9 @@
                 ססמה:
             </label>
             <input id="password" type="password" formControlName="password">
-            <div class="error" *ngIf="signInForm.controls['password'].errors?.required!=null&&signInForm.controls['password'].touched==true">שדה זה הוא שדה חובה</div>
+            <div class="error"
+                *ngIf="signInForm.controls['password'].errors?.required!=null&&signInForm.controls['password'].touched==true">
+                שדה זה הוא שדה חובה</div>
 
         </div>
         <!-- <a routerLink="/createnewcall">createnewcall</a> -->

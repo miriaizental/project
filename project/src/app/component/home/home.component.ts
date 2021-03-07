@@ -13,14 +13,15 @@ import { VolunteeringserviceService } from 'src/app/services/volunteeringservice
 })
 export class HomeComponent implements OnInit {
 
-  login=localStorage.getItem("login");
+  login = localStorage.getItem("login");
   constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) {
+
+
     
-
-
   }
 
   ngOnInit(): void {
+
 
   }
 
@@ -35,6 +36,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  
+
 
 }

@@ -1,9 +1,15 @@
 const dal = require("../dal/dal.js")
 const { successResponse, failureResponse } = require("../common/service.js")
- const tableName = "Users_tbl"
+
 
 function SignIn(request, response) {
-
+    let tableName = '';
+    if (request.query.type == '1') {
+        tableName = 'Volunteers_tbl'
+    }
+    else {
+        tableName = 'Users_tbl'
+    }
 
     const query = `SELECT ISNULL((SELECT password FROM ${tableName} WHERE password='${request.query.password}' AND userName='${request.query.userName}'),0) as password`
 
@@ -17,6 +23,8 @@ function SignIn(request, response) {
     }, (err) => failureResponse('ארעה שגיאה בעת כניסתך למערכת, אנא נסה שנית', err, response).send())
         .catch((err) => console.log('err from catch: ' + err))
 }
+
+
 
 module.exports = {
     SignIn

@@ -33,6 +33,7 @@ export class VolunteeringserviceService {
 
     })
 
+
   }
   ///////////////
   // getPosition(): Promise<any> {
@@ -62,8 +63,8 @@ export class VolunteeringserviceService {
   updateRequestGranted(requestnumber: number): Observable<JSON> {
     return this.http.post<JSON>(`${this.url}/api/updateRequestGranted`, { "requestnumber": requestnumber, "login": this.logIn }, this.options)
   }
-  updateResponseDate(requestnumber:number):Observable<JSON>{
-    return this.http.post<JSON>(`${this.url}/api/updateResponseDate`,{ "requestnumber": requestnumber }, this.options)
+  updateResponseDate(requestnumber: number): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/updateResponseDate`, { "requestnumber": requestnumber }, this.options)
   }
 
   getAllRequests(): Observable<AskForHelp[]> {
@@ -81,15 +82,15 @@ export class VolunteeringserviceService {
   getUserRequests(): Observable<Array<Object>> {
     return this.http.get<Array<Object>>(`${this.url}/api/getUserRequests`, { params: { password: localStorage.getItem("login") } })
   }
-  getVolunteerRequests():
-    Observable<Array<Object>> {
+  getVolunteerRequests(): Observable<Array<Object>> {
     return this.http.get<Array<Object>>(`${this.url}/api/getVolunteerRequests`, { params: { password: localStorage.getItem("login") } })
   }
 
-  SignIn(userName: string, password: string): Observable<JSON> {
+  SignIn(userName: string, password: string, type: string): Observable<JSON> {
     let data = {
       'password': password,
-      'userName': userName
+      'userName': userName,
+      'type': type
     }
     return this.http.get<JSON>(`${this.url}/api/signIn`, { params: data })
   }
@@ -97,6 +98,7 @@ export class VolunteeringserviceService {
   checkPassword(password: string): Observable<JSON> {
     return this.http.get<JSON>(`${this.url}/api/checkPassword`, { params: { password: password } })
   }
+
 
   SignUp(user: User): Observable<JSON> {
     return this.http.post<JSON>(`${this.url}/api/signUp`, user, this.options)
@@ -111,6 +113,13 @@ export class VolunteeringserviceService {
     return this.http.get<JSON>(`${this.url}/api/requestWasGranted`, { params: { requestNumber: requestNumber.toString() } })
   }
 
+  ContactUs(email: string): Observable<JSON> {
+    let data = {
+      'password': this.logIn,
+      'email': email,
+    }
+    return this.http.get<JSON>(`${this.url}/api/contactUs`, { params: data })
 
+  }
 
 }
