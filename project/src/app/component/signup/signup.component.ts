@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup
   checkpassword: boolean
 
-  constructor(private route: Router, private volunteeringservice: VolunteeringserviceService) { }
+  constructor(private route: Router, private vs: VolunteeringserviceService) { }
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
 
   checkPassword(): void {
     let val = this.signUpForm.controls.password.value
-    this.volunteeringservice.checkPassword(val).subscribe((data) => {
+    this.vs.checkPassword(val).subscribe((data) => {
       if (data['DATA'] == false) {
         this.checkpassword = false
       }
@@ -55,12 +55,13 @@ export class SignupComponent implements OnInit {
       user.city = this.signUpForm.controls.city.value
       user.restriction = this.signUpForm.controls.restriction.value
 
-      this.volunteeringservice.SignUp(user).subscribe((data) => {
+      this.vs.SignUp(user).subscribe((data) => {
 
 
         if (data['STATUS'] == 'SUCCESS') {
           localStorage.setItem("login", user.password)
-          this.route.navigate(['/askforhelp'])
+          this.vs.logIn=user.password;
+          this.route.navigate(['/home'])
         }
         alert(data['MESSAGE'])
 

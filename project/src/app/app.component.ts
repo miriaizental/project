@@ -38,6 +38,12 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
+  isLogedIn(){
+    if(this.vs.logIn && this.vs.logIn!='')
+      return true;
+    return false;
+  }
+
   Logout() {
     localStorage.setItem("login", "")
     this.vs.logIn = '';

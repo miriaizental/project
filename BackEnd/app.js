@@ -44,7 +44,7 @@ const contact_us_route=require('./routes/ContactUs.route')
 // })
 
 const sendMailAuto = () => {
-    cron.schedule('21 16 * * *', () => {
+    cron.schedule('59 17 * * *', () => {
         CheckMyRequests(request,response)
     })
 }

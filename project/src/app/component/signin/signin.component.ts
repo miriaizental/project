@@ -12,7 +12,7 @@ export class SigninComponent implements OnInit {
 
   signInForm: FormGroup
 
-  constructor(private volunteeringservice: VolunteeringserviceService, private route: Router) { }
+  constructor(private vs: VolunteeringserviceService, private route: Router) { }
 
   ngOnInit(): void {
 
@@ -26,7 +26,7 @@ export class SigninComponent implements OnInit {
 
   send() {
     if (this.signInForm.valid) {
-      this.volunteeringservice.SignIn(this.signInForm.controls.userName.value, this.signInForm.controls.password.value,this.signInForm.controls.type.value).subscribe((data) => {
+      this.vs.SignIn(this.signInForm.controls.userName.value, this.signInForm.controls.password.value,this.signInForm.controls.type.value).subscribe((data) => {
         if (data['DATA']) {
           localStorage.setItem("login", this.signInForm.controls.password.value)
           this.route.navigate(['/home'])

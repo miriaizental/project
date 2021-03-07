@@ -295,7 +295,7 @@
 <div>
 <button (click)="GoBack()" id="prev"><-</button>
 <button [routerLink]="['/home']" id="home">בית</button>
-<a href="javascript:void(0);" *ngIf='login&&login!=""' (click)="Logout()">התנתק</a>
+<a href="javascript:void(0);" *ngIf='isLogedIn()' (click)="Logout()">התנתק</a>
 <button id="help">?</button>
 </div>
 <router-outlet></router-outlet>

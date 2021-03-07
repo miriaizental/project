@@ -25,6 +25,12 @@ export class HomeComponent implements OnInit {
 
   }
 
+  isLogedIn(){
+    if(this.volunteeringservice.logIn && this.volunteeringservice.logIn!='')
+      return true;
+    return false;
+  }
+
 
   askForHelp() {
 
