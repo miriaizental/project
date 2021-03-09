@@ -9,6 +9,7 @@ import { HomeComponent } from './component/home/home.component';
 import {RequestinmycareComponent} from './component/requestinmycare/requestinmycare.component'
 import { VolunteersignupComponent } from './component/volunteersignup/volunteersignup.component';
 import { LogupComponent } from './component/logup/logup.component';
+import { FeedbackComponent } from './component/feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'askforhelp', component: AskforhelpComponent },
   { path: 'requestinmycare', component: RequestinmycareComponent },
   {path:'volunteersignup',component:VolunteersignupComponent} ,
-  {path:'logup',component:LogupComponent}
+  {path:'logup',component:LogupComponent},
+  {path:'feedback',component:FeedbackComponent}
 ];
 
 @NgModule({

@@ -54,50 +54,60 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
 
   response(requestNumber: number) {
 
-    var answer = window.confirm(" מרגע זה הבקשה תעבור לטיפולך, האם הינך בטוח?")
-    if (answer) {
-      this.volunteeringservice.RequestWasGranted(requestNumber).subscribe(data => {
-        if (data['DATA'] == 0) {
+    if (this.login == '' || !this.login) {
+      alert("עליך להתחבר למערכת על מנת להענות לבקשה")
+    }
+    else {
+      var answer = window.confirm(" מרגע זה הבקשה תעבור לטיפולך, האם הינך בטוח?")
+      if (answer) {
+        this.volunteeringservice.RequestWasGranted(requestNumber).subscribe(data => {
+          if (data['DATA'] == 0) {
 
-          this.volunteeringservice.updateResponseDate(requestNumber).subscribe((data) => {
-            if (data['STATUS'] != 'SUCCESS')
-              alert(data['MESSAGE'])
-            this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
-              // connection.send('refresh')
-              if (data['STATUS'] == 'SUCCESS') {
-                this.ws.send()
-                this.ws.close()
-                this.route.navigate(['/requestinmycare'])
-              }
-              else {
+            this.volunteeringservice.updateResponseDate(requestNumber).subscribe((data) => {
+              if (data['STATUS'] != 'SUCCESS')
                 alert(data['MESSAGE'])
-              }
+              this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
+                // connection.send('refresh')
+                if (data['STATUS'] == 'SUCCESS') {
+                  this.ws.send()
+                  this.ws.close()
+                  this.route.navigate(['/requestinmycare'])
+                }
+                else {
+                  alert(data['MESSAGE'])
+                }
+              })
             })
-          })
-          // this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
-          //   // connection.send('refresh')
-          //   if (data['STATUS'] == 'SUCCESS') {
-          //     this.ws.send()
-          //     this.ws.close()
-          //     this.route.navigate(['/requestinmycare'])
-          //   }
-          //   else {
-          //     alert(data['MESSAGE'])
-          //   }
-          // })
-        }
-        else {
-          alert("תודה על ההענות, אך בקשה זו כבר בטיפול")
-        }
-      })
+            // this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
+            //   // connection.send('refresh')
+            //   if (data['STATUS'] == 'SUCCESS') {
+            //     this.ws.send()
+            //     this.ws.close()
+            //     this.route.navigate(['/requestinmycare'])
+            //   }
+            //   else {
+            //     alert(data['MESSAGE'])
+            //   }
+            // })
+          }
+          else {
+            alert("תודה על ההענות, אך בקשה זו כבר בטיפול")
+          }
+        })
+      }
     }
   }
 
   contactUs(email: string) {
-    var answer = window.confirm("המשתמש יקבל את כתובת המייל שלך על מנת ליצור איתך קשר\n האם הינך מוכן לצעד זה?")
-    if (answer) {
-      this.volunteeringservice.ContactUs(email).subscribe()
-      alert("פרטיך הועברו למשתמש , והוא ייצור איתך קשר בקרוב")
+    if (this.login == '' || !this.login) {
+      alert("עליך להתחבר למערכת על מנת ליצור קשר")
+    }
+    else {
+      var answer = window.confirm("המשתמש יקבל את כתובת המייל שלך על מנת ליצור איתך קשר\n האם הינך מוכן לצעד זה?")
+      if (answer) {
+        this.volunteeringservice.ContactUs(email).subscribe()
+        alert("פרטיך הועברו למשתמש , והוא ייצור איתך קשר בקרוב")
+      }
     }
   }
 }

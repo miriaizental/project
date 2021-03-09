@@ -11,6 +11,7 @@
     "express": "^4.17.1",
     "geoip-lite": "^1.4.2",
     "ip": "^1.1.5",
+    "iplocation": "^7.2.0",
     "local-ip": "^2.0.0",
     "msnodesqlv8": "^2.0.5",
     "mssql": "^3.3.0",

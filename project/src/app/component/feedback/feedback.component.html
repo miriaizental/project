@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>המשוב שלך חשוב לנו</h2>
+    <form [formGroup]="feedbackForm" (submit)="send()">
+        <div>
+            <label for="time">כמה זמן עבר מרגע הבקשה ועד ההענות אליה?</label>
+            <select formControlName="time">
+                <option value="week-">פחות משבוע</option>
+                <option value="week">שבוע</option>
+                <option value="week+">יותר משבוע</option>
+            </select>
+
+        </div>
+        <div>
+            <label for="satisfaction">עד כמה הבקשה בוצעה לשביעות רצונך?</label>
+            <input formControlName="satisfaction" type="number" min="0" max="10" step="1">
+        </div>
+        <div>
+            <label for="remarks">האם יש לך הערות לשיפור?</label>
+            <input type="text" formControlName="remarks">
+        </div>
+
+        <input class="button" type="submit">
+
+
+
+
+
+    </form>
+</body>
+
+</html>

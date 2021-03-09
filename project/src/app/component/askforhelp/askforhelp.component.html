@@ -16,7 +16,7 @@
         </ng-template>
 
     </div>
-    <a href="javascript:void(0)" *ngIf="ureq.requestGranted;">האם הבקשה בוצעה?</a>
+    <a href="javascript:void(0)" *ngIf="ureq.requestGranted;" (click)="feedback(ureq.requestNumber)">האם הבקשה בוצעה?</a>
 
 
 </div>

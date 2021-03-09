@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service'
 import { WebSocketServiceService } from 'src/app/services/web-socket-service.service'
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,7 +15,7 @@ export class AskforhelpComponent implements OnInit {
   userRequests: Array<object>
 
 
-  constructor(private Volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService) {
+  constructor(private Volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
     this.GetUserRequests()
     ws.connect()
   }
@@ -50,5 +52,10 @@ export class AskforhelpComponent implements OnInit {
 
       })
     }
+  }
+
+  feedback(reqnum: number) {
+    this.route.navigate(['/feedback'])
+
   }
 }

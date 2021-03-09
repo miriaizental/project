@@ -13,6 +13,7 @@ import { AskforhelpComponent } from './component/askforhelp/askforhelp.component
 import { RequestinmycareComponent } from './component/requestinmycare/requestinmycare.component';
 import { VolunteersignupComponent } from './component/volunteersignup/volunteersignup.component';
 import { LogupComponent } from './component/logup/logup.component';
+import { FeedbackComponent } from './component/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LogupComponent } from './component/logup/logup.component';
     RequestinmycareComponent,
     VolunteersignupComponent,
     LogupComponent,
+    FeedbackComponent,
     
   ],
   imports: [

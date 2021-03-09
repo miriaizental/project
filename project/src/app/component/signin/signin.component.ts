@@ -29,6 +29,7 @@ export class SigninComponent implements OnInit {
       this.vs.SignIn(this.signInForm.controls.userName.value, this.signInForm.controls.password.value,this.signInForm.controls.type.value).subscribe((data) => {
         if (data['DATA']) {
           localStorage.setItem("login", this.signInForm.controls.password.value)
+          this.vs.logIn=this.signInForm.controls.password.value
           this.route.navigate(['/home'])
         }
         else {

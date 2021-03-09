@@ -100,7 +100,11 @@ export class CreatenewcallComponent implements OnInit {
   async GetAddress(latitude, longitude) {
 
     var resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=` + latitude + `&lon=` + longitude + `&zoom=18&addressdetails=1`);
-    var state = await resp.json(); // כאן יש לך הכל
+    var state = await resp.json();
+    console.log('lat',latitude,'lng',longitude);
+     
+    console.log('s',state.address);
+    
     return state.address
 
   }

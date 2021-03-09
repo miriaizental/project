@@ -5,6 +5,8 @@ const cors = require('cors')
 const cron = require('node-cron');
 const { CheckMyRequests } = require("./controllers/RequestsInMyCare.controller");
 const { request, response } = require("express");
+const ipLocation = require("iplocation");
+
 
 const ask_for_help_route = require("./routes/AskForHelp.route");
 const sign_up_route = require('./routes/SignUp.route')
@@ -12,7 +14,7 @@ const sign_in_route = require('./routes/SignIn.route')
 const reservoir_of_requests = require('./routes/reservoirOfRequests.route')
 const volunteer_sign_up_route = require('./routes/VolunteerSignUp.route')
 const request_in_my_care_route = require('./routes/RequestsInMyCare.route')
-const contact_us_route=require('./routes/ContactUs.route')
+const contact_us_route = require('./routes/ContactUs.route')
 /////////////////////////
 // const googleMapsClient = require('@google/maps').createClient({
 //     key: 'AIzaSyBQ15dTEVyPYF67jF4omi6YBx3CIFFO2oA'
@@ -43,11 +45,19 @@ const contact_us_route=require('./routes/ContactUs.route')
 //     })
 // })
 
-const sendMailAuto = () => {
-    cron.schedule('59 17 * * *', () => {
-        CheckMyRequests(request,response)
-    })
-}
+// const sendMailAuto = () => {
+//     cron.schedule('59 17 * * *', () => {
+//         CheckMyRequests(request,response)
+//     })
+// }
+//const url = `http://freegeoip.net/json/` + ip
+// const fn = (url, (error, response, body) => {
+//     if (!error && response.statusCode == 200) {
+//         const data = JSON.parse(body)
+//         console.log('locationnnn', location(data));
+//     }
+
+// })
 
 app.use(cors())
 app.use(bd.json())
@@ -66,7 +76,10 @@ contact_us_route.route(app)
 
 /////////////////////////////////////
 app.listen(process.env.PORT || 3000, () => {
-    sendMailAuto()
+    cron.schedule('02 12 * * *', () => {
+        CheckMyRequests(request, response)
+
+    })
     console.log("server is listening on port 3000")
 })
 
