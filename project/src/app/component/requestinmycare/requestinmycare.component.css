@@ -1,8 +1,7 @@
-.req{
-    border-color:black;
-    border: 2px;
-    border-style: solid;
-    padding: 20px;
-    margin: 5px;
-
+body{
+    text-align: right;
+    margin: 10px;
+}
+#lastreq{
+    margin: 10px;
 }

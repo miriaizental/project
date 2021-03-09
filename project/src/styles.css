@@ -1,26 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-input,select{
-    margin:5px
-}
-span{
-    font-size: small;
-}
-div{
-    font-size: 15px;
-}
-body{
-    direction: rtl;
-    font-size: small;
-
-}
-button{
-    font-size: large;
-    margin: 5px;
-    width: 95%;
+body {
+    text-align: right;
 }
 .error{
     color: red;
     font-size:x-small;
     margin: 0px;
     padding: 0px;
+}
+a{
+    font-size:medium;
+}
+input{
+    text-align: right;
+}
+.req{
+    border-color:black;
+    border: 2px;
+    border-style: solid;
+    padding: 20px;
+    margin: 5px;
+
 }

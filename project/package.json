@@ -22,6 +22,7 @@
     "@angular/router": "~10.0.6",
     "@ngrx/store": "^10.1.2",
     "@types/jquery": "^3.5.4",
+    "bootstrap": "^4.6.0",
     "jQuery": "^1.7.4",
     "jquery": "^3.5.1",
     "rxjs": "~6.5.5",

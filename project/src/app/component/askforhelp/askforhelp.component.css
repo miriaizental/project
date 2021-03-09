@@ -2,15 +2,14 @@
     padding-top: 15px;
     font-size: small;
 }
-.req{
-    border-color:black;
-    border: 2px;
-    border-style: solid;
-    padding: 20px;
-    margin: 5px;
-
-}
-#removerequest{
+.removerequest{
    
-    font-size: x-small;
+    font-size: small;
+}
+body{
+    text-align: right;
+    padding: 10px;
+}
+#lastreq{
+    margin: 10px;
 }

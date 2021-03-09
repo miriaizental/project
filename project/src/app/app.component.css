@@ -1,18 +1,16 @@
-#home{
-    font-size: small;
-    width: min-content;
-}
 #prev{
+    float: right;
     font-size: small;
     width: max-content;
 }
 #help{
-    position: absolute;
-    left: 10px;
     font-size: small;
-    width: min-content; 
+    width: min-content;
+    float: left;
 }
-div{
-    margin-bottom: 30px;
-    background-color: rgb(240, 238, 238);
+#main{
+    text-align: right;
+    padding: 5px;
+    background-color:whitesmoke;
 }
+
