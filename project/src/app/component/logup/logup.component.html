@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <button (click)="logup(1)">הרשם כמשתמש</button>
-    <button (click)="logup(2)">הרשם כמתנדב</button>
 
+<body class="container-fluid">
+    <div class="card">
+        <p>האם אתה מעונין להרשם לקבלת עזרה או להתנדבות?
+            כמובן בתור משתמש תוכל גם להגיש עזרה,
+            כך שאם אתה מעוניין להעזר וגם לעזור אנא הרשם כמשתמש:)
+        </p>
+    </div>
+    <div>
+        <button (click)="logup(1)" class="btn btn-outline-success container-fluid">הרשם כמשתמש</button>
+        <button (click)="logup(2)" class="btn btn-outline-success container-fluid">הרשם כמתנדב</button>
+    </div>
 </body>
+
 </html>

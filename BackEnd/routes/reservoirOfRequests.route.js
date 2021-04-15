@@ -1,7 +1,6 @@
 const reservoirOfRequestsController = require("../controllers/reservoirOfRequests.controller")
 const commonService = require("../common/service")
 const { CheckPassword } = require("../controllers/AskForHelp.controller");
-var ip = require("ip");
 
 function route(app) {
 
@@ -18,7 +17,6 @@ function route(app) {
     })
 
     app.use("/api/allRequests", (req, res, next) => {
-        //console.log(ip.address());
         next()
     })
 

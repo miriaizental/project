@@ -56,6 +56,7 @@ export class AskforhelpComponent implements OnInit {
 
   feedback(reqnum: number) {
     this.route.navigate(['/feedback'])
+    this.Volunteeringservice.removeRequest(reqnum).subscribe()
 
   }
 }

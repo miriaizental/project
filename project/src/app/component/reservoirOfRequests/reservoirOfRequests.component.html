@@ -1,23 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<div id="sum">סך הכל {{this.requests.length}} בקשות ממתינות</div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
+<body dir="rtl">
+    <div class="comp">
+        <div class="text-success" id="sum">סך הכל {{this.requests.length}} בקשות ממתינות למענה באזור שלך</div>
 
-<div *ngFor="let req of requests" class="x">
-    <div class="un">{{req.userName}}</div>
-    <span>{{req.city}}, באופן {{req.time}}</span><br>
-    <div>{{req.requestDetails}}</div>
-
-    <!-- <div *ngIf="!this.isshown[req.requestNumber]">
+        <div class="container-fluid">
+            <div *ngFor="let req of requests" class="request card bt">
+                <div class="un">{{req.userName}}</div>
+                <div>
+                    <div class="in">{{req.city}}, באופן {{req.time}}</div>
+                    <div class="in">{{req.requestDetails}}</div>
+                    <div class="in">{{req.requestNumber}}</div>
+                </div>
+                <!-- <div *ngIf="!this.isshown[req.requestNumber]">
         <a href="javascript:void(0)" (click)='getDetails(req.requestNumber)'>פרטים נוספים</a>
     </div>
 
     <div *ngIf="this.isshown[req.requestNumber]" class="details">
         <div>כתובת: {{req.street}}</div>
     </div> -->
+                <div class="btn-group-vertical">
+                    <button (click)="response(req.requestNumber)"
+                        class="requestsbutton btn btn-outline-success btn-sm container-fluid"
+                        *ngIf="login&&login!=''">מענה
+                        לבקשה</button>
+                    <button (click)="contactUs(req.password)"
+                        class="requestsbutton btn btn-outline-success btn-sm container-fluid"
+                        *ngIf="login&&login!=''">צור קשר עם
+                        {{req.userName}}</button>
+                        <div class="requestsbutton btn btn-outline-success btn-sm container-fluid"
+                        *ngIf="!login||login==''">על מנת להענות לבקשה עליך להתחבר למערכת</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-    <!-- <button (click)="response(req.requestNumber)" class="requestsbutton" *ngIf="login&&login!=''">מענה לבקשה</button> -->
-    <button (click)="response(req.requestNumber)" class="requestsbutton">מענה לבקשה</button>
-    <button (click)="contactUs(req.email)" class="requestsbutton">צור קשר עם {{req.userName}}</button>
-
-
-</div>
+</html>

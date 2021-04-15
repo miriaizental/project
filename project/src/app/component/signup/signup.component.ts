@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
 
   checkPassword(): void {
     let val = this.signUpForm.controls.password.value
-    this.vs.checkPassword(val).subscribe((data) => {
+    this.vs.checkPassword(val,1).subscribe((data) => {
       if (data['DATA'] == false) {
         this.checkpassword = false
       }
@@ -54,6 +54,8 @@ export class SignupComponent implements OnInit {
       user.email=this.signUpForm.controls.email.value
       user.city = this.signUpForm.controls.city.value
       user.restriction = this.signUpForm.controls.restriction.value
+      user.ipAddress = this.vs.ipAddress
+
 
       this.vs.SignUp(user).subscribe((data) => {
 

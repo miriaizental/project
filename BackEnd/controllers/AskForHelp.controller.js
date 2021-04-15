@@ -1,29 +1,12 @@
 const dal = require("../dal/dal.js")
-const nodemailer = require('nodemailer');
-const geoip = require('geoip-lite');
-
-
-const { successResponse, failureResponse } = require("../common/service.js")
-
+const { successResponse, failureResponse } = require("../common/service.js");
 const table_name = 'AsksForHelp_tbl'
 
+//יצירת בקשה חדשה
+
 async function CreateNewCall(request, response) {
-
-    ////////////////////////////
-    var ip = "195.60.235.69"
-    var geo = geoip.lookup(ip);
-    console.log('geo', geo);
-    ////////////////////////////
-    //(ip, location) ->
-    
-    
-
-
-
     const call = request.body
-
-    const query = `INSERT INTO ${table_name} VALUES('${call.requestDetails}','${call.password}','${call.city}','${call.street}','${call.time}',0,GETDATE(),null,null)`
-    console.log(query);
+    const query = `INSERT INTO ${table_name} VALUES('${call.requestDetails}','${call.password}','${call.city}','${call.street}','${call.time}',0,GETDATE(),null,null,${call.location})`
     await dal.executeAsync(query, request.body, response).then((data) => {
         successResponse('בקשתך נכנסה למאגר', data, response).send()
     }, (err) => failureResponse('ארעה שגיאה', err, response).send())
@@ -31,10 +14,11 @@ async function CreateNewCall(request, response) {
 
 }
 
+//הצגת בקשות המשתמש למשתמש
+
 async function GetUserRequests(request, response) {
     console.log(request.query.password);
     const query = `SELECT requestNumber,requestDetails,requestGranted FROM ${table_name} WHERE password='${request.query.password}'`
-    console.log(query);
     await dal.executeAsync(query, request.body, response).then((data) => {
 
         response.send(data)
@@ -43,11 +27,11 @@ async function GetUserRequests(request, response) {
         .catch((err) => console.log('err from catch: ' + err))
 }
 
+//מחיקת בקשה
 
 async function RemoveRequest(request, response) {
     var x = request.body;
     const query = `delete from ${table_name} where requestNumber=${x.requestnumber}`
-    console.log(query);
     await dal.executeAsync(query, request.body, response).then((data) => {
         successResponse('בקשתך נמחקה מהמאגר', data, response).send()
     }, (err) => failureResponse('ארעה שגיאה', err, response).send())
@@ -55,10 +39,27 @@ async function RemoveRequest(request, response) {
 
 }
 
+//מחיקת בקשות ישנות
+
+async function DeletingOldRequests(request, response) {
+    const query = `delete from ${table_name} where 
+    DATEDIFF(day,requestDate,GETDATE())>50 and time='מיידי'`
+    console.log(query);
+    successResponse('בקשתה נמחקה מהמאגר', data, response).send()
+    await dal.executeAsync(query, request.body, response).then((data) => {
+    }, (err) => failureResponse('ארעה שגיאה', err, response).send())
+        .catch((err) => console.log('err from aaaa: ' + err))
+}
+
+
+
 
 
 module.exports = {
     CreateNewCall,
     GetUserRequests,
     RemoveRequest,
+    DeletingOldRequests
+
+
 }

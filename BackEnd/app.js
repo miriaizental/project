@@ -3,9 +3,11 @@ const app = express();
 const bd = require('body-parser')
 const cors = require('cors')
 const cron = require('node-cron');
-const { CheckMyRequests } = require("./controllers/RequestsInMyCare.controller");
-const { request, response } = require("express");
 const ipLocation = require("iplocation");
+const { request, response } = require("express");
+const { CheckMyRequests } = require("./controllers/RequestsInMyCare.controller");
+const { DeletingOldRequests } = require("./controllers/AskForHelp.controller")
+//var google = require('google-maps')
 
 
 const ask_for_help_route = require("./routes/AskForHelp.route");
@@ -15,6 +17,7 @@ const reservoir_of_requests = require('./routes/reservoirOfRequests.route')
 const volunteer_sign_up_route = require('./routes/VolunteerSignUp.route')
 const request_in_my_care_route = require('./routes/RequestsInMyCare.route')
 const contact_us_route = require('./routes/ContactUs.route')
+const manager_sign_up_route = require('./routes/ManagerSignup.route')
 /////////////////////////
 // const googleMapsClient = require('@google/maps').createClient({
 //     key: 'AIzaSyBQ15dTEVyPYF67jF4omi6YBx3CIFFO2oA'
@@ -71,15 +74,37 @@ sign_in_route.route(app)
 volunteer_sign_up_route.route(app)
 request_in_my_care_route.route(app)
 contact_us_route.route(app)
+manager_sign_up_route.route(app)
 
 /////////////////////////////////
 
 /////////////////////////////////////
 app.listen(process.env.PORT || 3000, () => {
-    cron.schedule('02 12 * * *', () => {
-        CheckMyRequests(request, response)
+    cron.schedule('55 12 * * *', () => {
+        CheckMyRequests(request, response, 'Manager_tbl')
+    })
+    cron.schedule('53 12 * * *', () => {
+        CheckMyRequests(request, response, 'Users_tbl')
+    })
+    cron.schedule('54 12 * * *', () => {
+        CheckMyRequests(request, response, 'Volunteers_tbl')
+    })
+    cron.schedule('37 18 * * *', () => {
+        DeletingOldRequests(request, response)
 
     })
+    ///////////////////////////
+
+    // var geocoder = new google.maps.Geocoder();
+    // geocoder.geocode({ 'address': 'miami, us' }, function (results, status) {
+    //     if (status == google.maps.GeocoderStatus.OK) {
+    //         console.log("location : " + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+    //     } else {
+    //         console.log("Something got wrong " + status);
+    //     }
+    // });
+
+    ////////////////////////////
     console.log("server is listening on port 3000")
 })
 

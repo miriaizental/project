@@ -10,13 +10,17 @@ import { VolunteeringserviceService } from 'src/app/services/volunteeringservice
   styleUrls: ['./app.component.css']
 })
 
+
+
 export class AppComponent implements OnInit, OnDestroy {
 
-
+  
   title = 'project';
-  login=localStorage.getItem("login");
+  login = localStorage.getItem("login");
+  role = localStorage.getItem("role")
 
   constructor(private location: Location, private route: Router, private vs: VolunteeringserviceService) {
+
     // getJSON('http://gd.geobytes.com/GetCityDetails',(data)=>{
     //   console.log(JSON.stringify(data,null,2));
 
@@ -31,15 +35,18 @@ export class AppComponent implements OnInit, OnDestroy {
     if (localStorage.getItem("login") == null) {
       localStorage.setItem("login", "")
     }
+    //localStorage.setItem("ipaddress","")
     console.log("login: " + localStorage.getItem("login"));
+    console.log("role: " + localStorage.getItem("role"));
+
   }
   ngOnInit() {
   }
   ngOnDestroy() {
   }
 
-  isLogedIn(){
-    if(this.vs.logIn && this.vs.logIn!='')
+  isLogedIn() {
+    if (this.vs.logIn && this.vs.logIn != '')
       return true;
     return false;
   }
@@ -47,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
   Logout() {
     localStorage.setItem("login", "")
     this.vs.logIn = '';
-    this.login='';
+    this.login = '';
   }
 
   GoBack() {

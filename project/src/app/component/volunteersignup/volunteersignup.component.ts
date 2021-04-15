@@ -33,7 +33,7 @@ export class VolunteersignupComponent implements OnInit {
 
   checkPassword(): void {
     let val = this.volunteerSignUpForm.controls.password.value
-    this.vs.checkPassword(val).subscribe((data) => {
+    this.vs.checkPassword(val,2).subscribe((data) => {
       if (data['DATA'] == false) {
         this.checkpassword = false
       }
@@ -43,6 +43,7 @@ export class VolunteersignupComponent implements OnInit {
     })
 
   }
+
 
   sendData() {
     if (this.volunteerSignUpForm.valid == true && this.checkpassword == true) {

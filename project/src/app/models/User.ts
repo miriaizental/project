@@ -5,6 +5,8 @@ export class User{
     email:string;
     city:string;
     restriction:string;
+    ipAddress:string
+
 }
 
 

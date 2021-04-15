@@ -7,16 +7,21 @@
     <title>Document</title>
 </head>
 
-<body>
-    <div *ngIf="isLogedIn()">
-        <button [routerLink]="['/createnewcall']" class="userButton2">בקש עזרה</button>
-        <button [routerLink]="['/askforhelp']" class="userButton2">הבקשות שלי</button>
-        <button [routerLink]="['/requestinmycare']" class="userButton2">בקשות בטיפולי</button>
+<body id="main">
+    <div *ngIf="isLogedIn()" class="btn-group container-fluid">
+        <button [routerLink]="['/createnewcall']" class="btn btn-success userButton2" *ngIf="Roletype()==2">בקש עזרה</button>
+        <button [routerLink]="['/askforhelp']" class="btn btn-success userButton2" *ngIf="Roletype()==2">הבקשות שלי</button>
+        <button [routerLink]="['/requestinmycare']" class="btn btn-success userButton2">בקשות בטיפולי</button>
+        <button [routerLink]="['/statistics']" class="btn btn-success userButton2" *ngIf="Roletype()==3">צפייה בסטטיסטיקות</button>
+        <button [routerLink]="['/newmanager']" class="btn btn-success userButton2" *ngIf="Roletype()==3">הוספת מנהל</button>
+
     </div>
-    <div *ngIf="!isLogedIn()">
-        <button [routerLink]="['/logup']" class="userButton">משתמש חדש</button>
-        <button [routerLink]="['/signin']" class="userButton">משתמש רשום</button>
+    <div *ngIf="!isLogedIn()" class="btn-group container-fluid">
+        <button [routerLink]="['/logup']" class="btn btn-success userButton">משתמש חדש</button>
+        <button [routerLink]="['/signin']" class="btn btn-success userButton">משתמש רשום</button>
     </div>
+
+
     <app-reservoirOfRequests></app-reservoirOfRequests>
 </body>
 

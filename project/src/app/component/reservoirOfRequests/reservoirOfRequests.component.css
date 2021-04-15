@@ -1,33 +1,29 @@
 .un{
     font-size: 15px;
+    font-weight: bold;
 }
-.details{
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    border-top-width: 1px;
-    border-top-style:solid;
-
-}
-.x{
-    margin-bottom: 5px;
-    border-width: 1px;
-    border-style:solid;
+.request{
+    margin-bottom: 8px;
 }
 #sum{
-    font-weight: bold;
+    font-size: small;
 }
 
 div{
     padding: 8px
 }
 .requestsbutton{
-    width: 50%;
+    padding: 1px;
+}
+.comp{
+    text-align: right;
+}
+.in{
     margin: 0px;
-    margin-bottom: 20px;
-
+    padding: 0px;
+}
+.bt{
+font-size: medium;
 }
 
 

@@ -1,9 +1,9 @@
 const dal = require("../dal/dal.js")
 const sendemail = require("../functions/sendemail")
-
-
 const { successResponse, failureResponse } = require("../common/service.js")
 
+
+//הצגת כל הבקשות שלקח על עצמו המתנדב
 
 async function GetVolunteerRequests(request, response) {
     console.log(request.query.password);
@@ -19,9 +19,12 @@ async function GetVolunteerRequests(request, response) {
         .catch((err) => console.log('err from catch: ' + err))
 }
 
-async function CheckMyRequests(request, response) {
+//בדיקה האם המתנדב ביצע את הבקשות שלקח על עצמו
+
+async function CheckMyRequests(request, response,table) {
+
     const query = `select u.userName,v.email from AsksForHelp_tbl a 
-    join Volunteers_tbl v on v.password=a.volunteerpassword
+    join ${table} v on v.password=a.volunteerpassword
     join Users_tbl u on u.password=a.password
     where DATEDIFF(dd,a.responseDate,GETDATE())>7`
     await dal.executeAsync(query, request.body, response).then((data) => {
@@ -31,10 +34,13 @@ async function CheckMyRequests(request, response) {
             var html = `<h1>${data[i].userName}  מחכה לעזרתך</h1><h3>נא עשה זאת בהקדם האפשרי</h3>`
             sendemail.sendemail(data[i].email, subject, html)
         }
+        
 
     }, (err) => console.log('err from CheckMyRequests: ' + err))
         .catch((err) => console.log('err from catch: ' + err))
 }
+
+    
 
 module.exports = {
     GetVolunteerRequests,

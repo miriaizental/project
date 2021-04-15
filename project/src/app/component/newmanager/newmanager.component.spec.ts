@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { RequestinmycareComponent } from './requestinmycare.component';
+import { NewmanagerComponent } from './newmanager.component';
 
-describe('RequestinmycareComponent', () => {
-  let component: RequestinmycareComponent;
-  let fixture: ComponentFixture<RequestinmycareComponent>;
+describe('NewmanagerComponent', () => {
+  let component: NewmanagerComponent;
+  let fixture: ComponentFixture<NewmanagerComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RequestinmycareComponent ]
+      declarations: [ NewmanagerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RequestinmycareComponent);
+    fixture = TestBed.createComponent(NewmanagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

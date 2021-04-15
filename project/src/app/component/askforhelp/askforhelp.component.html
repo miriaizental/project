@@ -1,22 +1,38 @@
-<button [routerLink]="['/createnewcall']">בקשה חדשה</button>
-<h5>בקשות שביקשת לאחרונה</h5>
+<!DOCTYPE html>
+<html lang="en">
 
-<div *ngFor="let ureq of this.userRequests" class="req">
-    <div>
-        <span>{{ureq.requestDetails}}</span><br>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body dir="rtl">
+    <div class="container-fluid">
+        <button [routerLink]="['/createnewcall']" class="btn btn-success container-fluid">בקשה חדשה</button>
     </div>
+    <h4 id="lastreq">בקשות שביקשת לאחרונה</h4>
 
-    <div class="state">
-        <span *ngIf="ureq.requestGranted; else wait">בקשה בטיפול</span>
+    <div *ngFor="let ureq of this.userRequests" class="req card">
+        <div>
+            <span>{{ureq.requestDetails}}</span><br>
+        </div>
 
-        <ng-template #wait>
-            <span>הבקשה ממתינה לטיפול</span> <br>
-            <a href="javascript:void(0)" (click)="RemoveRequest(ureq.requestNumber)" id="removerequest">הסר מרשימת
-                הבקשות</a>
-        </ng-template>
+        <div class="state">
+            <span *ngIf="ureq.requestGranted; else wait">בקשה בטיפול</span>
+
+            <ng-template #wait>
+                <span>הבקשה ממתינה לטיפול</span> <br>
+                <a href="javascript:void(0)" (click)="RemoveRequest(ureq.requestNumber)" class="removerequest">הסר מרשימת
+                    הבקשות</a>
+            </ng-template>
+
+        </div>
+        <a href="javascript:void(0)" *ngIf="ureq.requestGranted;" (click)="feedback(ureq.requestNumber)">האם הבקשה בוצעה?</a>
+
 
     </div>
-    <a href="javascript:void(0)" *ngIf="ureq.requestGranted;" (click)="feedback(ureq.requestNumber)">האם הבקשה בוצעה?</a>
+</body>
 
-
-</div>
+</html>

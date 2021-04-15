@@ -7,19 +7,20 @@
     <title>Document</title>
 </head>
 
-<body>
+<body dir="rtl">
+    <h4>בקש עזרה</h4>
     <form [formGroup]="createNewCallForm" (submit)="send()">
 
-        <div>
+        <div  class="form-group">
             <label for="requestdetails">פרט את בקשתך </label>
-            <input id="requestdetails" type="text" formControlName="details">
+            <input id="requestdetails" type="text" formControlName="details"  class="form-control">
             <div class="error"
                 *ngIf="createNewCallForm.controls['details'].errors?.required!=null&&createNewCallForm.controls['details'].touched==true">
                 שדה זה הוא שדה חובה</div>
         </div>
-        <div>
+        <div  class="form-group">
             <label for="time">מועד ההתנדבות</label>
-            <select formControlName="time">
+            <select formControlName="time"  class="form-control">
                 <option value="גמיש">גמיש</option>
                 <option value="מיידי">מיידי</option>
             </select>
@@ -28,30 +29,30 @@
                 *ngIf="createNewCallForm.controls['time'].errors?.required!=null&&createNewCallForm.controls['time'].touched==true">
                 שדה זה הוא שדה חובה</div>
         </div>
-        <div>
+        <div  class="form-group">
             <label for="location">קבע מיקום</label>
-            <select formControlName="location" id="location" name="location">
+            <select formControlName="location" id="location" name="location"  class="form-control">
                 <option value="באופן אוטומטי">באופן אוטומטי</option>
                 <option value="באופן ידני">באופן ידני</option>
             </select>
             <!-- <input type="text" formControlName="time"> -->
             <div class="error"*ngIf="createNewCallForm.controls['location'].errors?.required!=null&&createNewCallForm.controls['location'].touched==true">שדה זה הוא שדה חובה</div>
         </div>
-        <div *ngIf="createNewCallForm.controls['location'].value=='באופן ידני'">
-            <div>
+        <div *ngIf="createNewCallForm.controls['location'].value=='באופן ידני'" >
+            <div  class="form-group">
                 <label for="city">עיר</label>
-                <input id="city" type="text" formControlName="city">
+                <input id="city" type="text" formControlName="city"  class="form-control">
                 <div class="error"*ngIf="createNewCallForm.controls['city'].value==''&&createNewCallForm.controls['city'].touched==true">שדה זה הוא שדה חובה</div>
             </div>
-            <div>
+            <div  class="form-group">
                 <label for="street">רחוב ומספר בית</label>
-                <input id="street" type="text" formControlName="street">
+                <input id="street" type="text" formControlName="street"  class="form-control">
                 <div class="error"*ngIf="createNewCallForm.controls['street'].value==''&&createNewCallForm.controls['street'].touched==true">שדה זה הוא שדה חובה</div>
 
             </div>
         </div>
 
-        <input class="button" type="submit">
+        <input class="button" type="submit" class="btn btn-success">
 
     </form>
 </body>

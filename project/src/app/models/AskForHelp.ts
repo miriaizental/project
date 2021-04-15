@@ -6,5 +6,6 @@ export class AskForHelp{
     time:string;
     street:string;
     city:string
+    location:number
 }
 

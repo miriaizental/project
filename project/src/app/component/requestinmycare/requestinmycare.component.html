@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <h3>בקשות בטיפולך</h3>
-    <div *ngFor="let ureq of this.requestsinmycare" class="req">
+    <h4 id="lastreq">בקשות בטיפולך</h4>
+    <div *ngFor="let ureq of this.requestsinmycare" class="req card">
         <div>
             <span>{{ureq.userName}}</span><br>
             <span>{{ureq.requestDetails}}</span><br>

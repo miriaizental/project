@@ -1,11 +1,11 @@
 .userButton{
-    width: 50%;
-    margin: 0px;
-    margin-bottom: 20px;
+    font-size: medium;
 }
 .userButton2{
-    width: 32%;
-    margin: 1px;
-    margin-bottom: 20px;
-    font-size: 15px;
+    font-size: 13px;
 }
+#main{
+    margin-top: 5px;
+}
+
+

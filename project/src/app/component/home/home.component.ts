@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,19 +16,26 @@ export class HomeComponent implements OnInit {
   constructor(private vs: VolunteeringserviceService, private route: Router) {
 
 
-    
+
   }
 
   ngOnInit(): void {
-
-
+   
   }
 
-  isLogedIn(){
-    if(this.vs.logIn && this.vs.logIn!='')
+  isLogedIn() {
+    if (this.vs.logIn && this.vs.logIn != '')
       return true;
     return false;
   }
+  Roletype() {
+    if (this.vs.role == 'volunteer')
+      return 1;
+    if (this.vs.role == 'user')
+      return 2;
+    return 3
+  }
+
 
 
   askForHelp() {

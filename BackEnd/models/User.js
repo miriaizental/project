@@ -4,6 +4,7 @@ const User={
     phone,
     email,
     city,
-    restriction
+    restriction,
+    ipAddress
 
 }

@@ -49,6 +49,7 @@ export class CreatenewcallComponent implements OnInit {
         call.time = this.createNewCallForm.controls['time'].value
         call.street = this.createNewCallForm.controls['street'].value
         call.city = this.createNewCallForm.controls['city'].value
+        call.location=0
       }
       else {
 
@@ -57,13 +58,14 @@ export class CreatenewcallComponent implements OnInit {
           await this.GetAddress(pos.lat, pos.lng).then(x => {
 
             call.city = x.town
-            call.street = x.road + ' ' + x.house_number
+            call.street = x.road
 
           })
         });
         call.password = localStorage.getItem("login")
         call.requestDetails = this.createNewCallForm.controls['details'].value
         call.time = this.createNewCallForm.controls['time'].value
+        call.location=1
 
 
       }

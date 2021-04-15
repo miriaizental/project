@@ -9,11 +9,11 @@
 </head>
 
 <body>
-    <h2>המשוב שלך חשוב לנו</h2>
+    <h4>המשוב שלך חשוב לנו</h4>
     <form [formGroup]="feedbackForm" (submit)="send()">
         <div>
             <label for="time">כמה זמן עבר מרגע הבקשה ועד ההענות אליה?</label>
-            <select formControlName="time">
+            <select formControlName="time" class="form-control">
                 <option value="week-">פחות משבוע</option>
                 <option value="week">שבוע</option>
                 <option value="week+">יותר משבוע</option>
@@ -22,14 +22,14 @@
         </div>
         <div>
             <label for="satisfaction">עד כמה הבקשה בוצעה לשביעות רצונך?</label>
-            <input formControlName="satisfaction" type="number" min="0" max="10" step="1">
+            <input formControlName="satisfaction" type="number" min="0" max="10" step="1" class="form-control">
         </div>
         <div>
             <label for="remarks">האם יש לך הערות לשיפור?</label>
-            <input type="text" formControlName="remarks">
+            <input type="text" formControlName="remarks" class="form-control">
         </div>
 
-        <input class="button" type="submit">
+        <input class="button btn btn-success" type="submit">
 
 
 

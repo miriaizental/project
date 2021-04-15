@@ -1,8 +1,8 @@
 const dal = require("../dal/dal.js")
 const { successResponse, failureResponse } = require("../common/service.js")
-
-
 tableName = "Volunteers_tbl"
+
+//יצירת מתנדב חדש
 
 function CreateNewUser(request, response) {
     
@@ -17,20 +17,7 @@ function CreateNewUser(request, response) {
 
 }
 
-async function CheckPassword(request, response) {
-    const query = `SELECT ISNULL((SELECT password FROM  ${tableName} WHERE password='${request.query.password}'),0) as password`
-    console.log(query);
-    await dal.executeAsync(query, request.body, response).then((data) => {
 
-        console.log('data from CheckPassword: ' + JSON.stringify(data))
-        if (data[0].password == "0")
-            successResponse('סיסמא מאושרת', true, response).send()
-        else
-            successResponse(' הסיסמא קיימת כבר במערכת', false, response).send()
-
-    }, (err) => failureResponse('ארעה שגיאה בעת בדיקת הסיסמה', err, response).send())
-        .catch((err) => console.log('err from catch: ' + err))
-}
 
 // function getLocation() {
 //     if (navigator.geolocation) {
@@ -46,5 +33,4 @@ async function CheckPassword(request, response) {
 
 module.exports = {
     CreateNewUser,
-    CheckPassword
 }

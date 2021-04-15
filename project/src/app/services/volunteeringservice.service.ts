@@ -5,6 +5,7 @@ import { User } from '../models/User';
 import { AskForHelp } from '../models/askForHelp';
 import { JsonPipe } from '@angular/common';
 import { VolunteerSignUp } from '../models/VolunteerSignUp';
+import { ManagerSignUp } from '../models/Managersignup';
 // import { GoogleMapsAPIWrapper } from '@agm/core';
 //import {Observable} from 'rxjs/Observable';
 
@@ -21,20 +22,24 @@ export class VolunteeringserviceService {
 
   url = "http://localhost:3000"
   logIn
+  role
   ipAddress
   coordinates: any;
 
 
   constructor(private http: HttpClient) {
     this.logIn = localStorage.getItem("login")
+    this.role = localStorage.getItem("role")
     this.http.get('https://jsonip.com').subscribe((ipOfNetwork) => {
       this.ipAddress = ipOfNetwork['ip']
       console.log("ip:", this.ipAddress);
 
     })
+    //this.ipAddress=localStorage.getItem("ipaddress")
 
 
   }
+
   ///////////////
   // getPosition(): Promise<any> {
   //   return new Promise((resolve, reject) => {
@@ -57,9 +62,6 @@ export class VolunteeringserviceService {
 
 
 
-
-
-
   updateRequestGranted(requestnumber: number): Observable<JSON> {
     return this.http.post<JSON>(`${this.url}/api/updateRequestGranted`, { "requestnumber": requestnumber, "login": this.logIn }, this.options)
   }
@@ -68,7 +70,10 @@ export class VolunteeringserviceService {
   }
 
   getAllRequests(): Observable<AskForHelp[]> {
-    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`)
+    var x = this.ipAddress
+    console.log('ipa', x);
+    
+    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`, { params: { ipAddress: this.ipAddress } })
   }
 
   createNewCall(call: AskForHelp): Observable<JSON> {
@@ -85,6 +90,10 @@ export class VolunteeringserviceService {
   getVolunteerRequests(): Observable<Array<Object>> {
     return this.http.get<Array<Object>>(`${this.url}/api/getVolunteerRequests`, { params: { password: localStorage.getItem("login") } })
   }
+  managerAuthentication(): Observable<Array<Object>> {
+
+    return this.http.get<Array<Object>>(`${this.url}/api/managerAuthentication`, { params: { password: localStorage.getItem("login") } })
+  }
 
   SignIn(userName: string, password: string, type: string): Observable<JSON> {
     let data = {
@@ -95,8 +104,12 @@ export class VolunteeringserviceService {
     return this.http.get<JSON>(`${this.url}/api/signIn`, { params: data })
   }
 
-  checkPassword(password: string): Observable<JSON> {
-    return this.http.get<JSON>(`${this.url}/api/checkPassword`, { params: { password: password } })
+  checkPassword(password: string, number: number): Observable<JSON> {
+    let data = {
+      'password': password,
+      'number': number.toString()
+    }
+    return this.http.get<JSON>(`${this.url}/api/checkPassword`, { params: data })
   }
 
 
@@ -108,20 +121,24 @@ export class VolunteeringserviceService {
     return this.http.post<JSON>(`${this.url}/api/volunteersignup`, volunteersignup, this.options)
 
   }
+  ManagerSignup(managersignup: ManagerSignUp): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/managersignup`, managersignup, this.options)
+  }
 
   RequestWasGranted(requestNumber: number): Observable<JSON> {
     return this.http.get<JSON>(`${this.url}/api/requestWasGranted`, { params: { requestNumber: requestNumber.toString() } })
   }
 
-  ContactUs(email: string): Observable<JSON> {
+  ContactUs(password: string): Observable<JSON> {
     let data = {
       'password': this.logIn,
-      'email': email,
+      'type': this.role,
+      'pass': password
     }
     return this.http.get<JSON>(`${this.url}/api/contactUs`, { params: data })
 
   }
-  sendfeedback(data:any){
+  sendfeedback(data: any) {
 
 
   }

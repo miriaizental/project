@@ -27,7 +27,8 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
     this.ws.wsUpdate.subscribe(
 
       (data) => {
-        this.getAllRequests();
+        
+          this.getAllRequests();
       }
       , (error) => {
         console.log(error);
@@ -98,14 +99,14 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
     }
   }
 
-  contactUs(email: string) {
+  contactUs(password: string) {
     if (this.login == '' || !this.login) {
       alert("עליך להתחבר למערכת על מנת ליצור קשר")
     }
     else {
       var answer = window.confirm("המשתמש יקבל את כתובת המייל שלך על מנת ליצור איתך קשר\n האם הינך מוכן לצעד זה?")
       if (answer) {
-        this.volunteeringservice.ContactUs(email).subscribe()
+        this.volunteeringservice.ContactUs(password).subscribe()
         alert("פרטיך הועברו למשתמש , והוא ייצור איתך קשר בקרוב")
       }
     }

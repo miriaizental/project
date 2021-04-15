@@ -6,42 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body id="signin" dir="rtl">
 
     <!-- <p>signin works!</p> -->
     <form [formGroup]="signInForm" (submit)="send()">
-        <h2>התחבר/י</h2>
-        <div>
-            <label for="type">האם הינך מתנדב או משתמש? </label>
-            <select formControlName="type">
-                <option value="1">מתנדב</option>
-                <option value="2">משתמש</option>
+        <h4>התחבר/י</h4>
+        <div class="form-group">
+            <label for="type">האם הינך מתנדב,משתמש או מנהל</label>
+            <select formControlName="type"  class="form-control" >
+                <option value="volunteer">מתנדב</option>
+                <option value="user">משתמש</option>
+                <option value="manager">מנהל</option>
             </select>
-        </div>
-        <div>
+        </div>‏
+        <div class="form-group">
             <label for="name">
                 שם משתמש:
             </label>
-            <input id="name" type="text" formControlName="userName">
+            <input id="name" type="text" class="form-control" formControlName="userName">
             <div class="error"
                 *ngIf="signInForm.controls['userName'].errors?.required!=null&&signInForm.controls['userName'].touched==true">
                 שדה זה הוא שדה חובה</div>
-
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="password">
                 ססמה:
             </label>
-            <input id="password" type="password" formControlName="password">
+            <input id="password" type="password" class="form-control" formControlName="password">
             <div class="error"
                 *ngIf="signInForm.controls['password'].errors?.required!=null&&signInForm.controls['password'].touched==true">
                 שדה זה הוא שדה חובה</div>
 
         </div>
         <!-- <a routerLink="/createnewcall">createnewcall</a> -->
-        <input type="submit" value="התחבר">
-        <div><a [routerLink]="['/signup']">פעם ראשונה שלך כאן? יצירת חשבון</a></div>
+        <input type="submit" value="התחבר" class="btn btn-success">
+        <div><a [routerLink]="['/logup']">פעם ראשונה שלך כאן? יצירת חשבון</a></div>
     </form>
 </body>
 
