@@ -69,11 +69,10 @@ export class VolunteeringserviceService {
     return this.http.post<JSON>(`${this.url}/api/updateResponseDate`, { "requestnumber": requestnumber }, this.options)
   }
 
-  getAllRequests(): Observable<AskForHelp[]> {
-    var x = this.ipAddress
-    console.log('ipa', x);
+  getAllRequests(ip:string): Observable<AskForHelp[]> {
+    console.log('ipa', ip);
     
-    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`, { params: { ipAddress: this.ipAddress } })
+    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`, { params: { ipAddress: ip } })
   }
 
   createNewCall(call: AskForHelp): Observable<JSON> {

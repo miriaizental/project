@@ -55,7 +55,7 @@ export class VolunteersignupComponent implements OnInit {
       volunteersignup.phone = this.volunteerSignUpForm.controls.phone.value
       volunteersignup.email=this.volunteerSignUpForm.controls.email.value
       volunteersignup.ipAddress = this.vs.ipAddress
-
+      debugger
       this.vs.VolunteerSignUp(volunteersignup).subscribe((data) => {
 
 

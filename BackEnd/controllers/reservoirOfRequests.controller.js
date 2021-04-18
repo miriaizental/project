@@ -28,7 +28,7 @@ async function RequestWasGranted(request, response) {
 async function GetAllRequests(request, response) {
 
     await FindLatAndLng(request, response)
-
+console.log(arr);
     const query = `select requestNumber,requestDetails,AsksForHelp_tbl.password,AsksForHelp_tbl.city,street,time,requestGranted,userName,phone,restriction,email
         from ${tableName} join Users_tbl on Users_tbl.password=AsksForHelp_tbl.password WHERE requestGranted=0 and requestNumber
         in (${arr})`
@@ -71,37 +71,40 @@ async function UpdateResponseDate(request, response) {
 async function FindLatAndLng(request, response) {
     const ip1 = request.query.ipAddress
     const geo1 = geoip.lookup(ip1);
+    console.log('geo1',geo1);
     const lat1 = geo1.ll[1]
     const lng1 = geo1.ll[0]
+    console.log(`my{${lat1},${lng1}}`);
 
 
-    let query = `select requestNumber,ipAddress,a.city,a.street,auto from Users_tbl u
+    let query = `select requestNumber,u.ipAddress,a.city,a.street,auto from Users_tbl u
     join AsksForHelp_tbl a on a.password=u.password`
 
     await dal.executeAsync(query, request.body, response).then((data) => {
+        if (data) {
+            data.forEach(element => {
+                if (element.auto == 1) {
+                    var ip2 = element.ipAddress
+                    var geo2 = geoip.lookup(ip2);
+                    let lat2 = geo2.ll[1];
+                    let lng2 = geo2.ll[0]
+                    calcCrow(lat1, lng1, lat2, lng2, element.requestNumber)
 
-        data.forEach(element => {
-            if (element.auto == 1) {
-                var ip2 = element.ipAddress
-                var geo2 = geoip.lookup(ip2);
-                let lat2 = geo2.ll[1];
-                let lng2 = geo2.ll[0]
-                calcCrow(lat1, lng1, lat2, lng2, element.requestNumber)
-               
-            }
-            else {
-                geo.find(`${element.city} ${element.street},ישראל`, function (err, res) {
-                    console.log(`${element.city} ${element.street},ישראל`);
-                    var location = res[0]['location']
-                    let lat3 = location['lat']
-                    let lng3 = location['lng']
-                    calcCrow(lat1, lng1, lat3, lng3, element.requestNumber)
-                   
-                });
-            }
-        
-            
-        });
+                }
+                else {
+                    geo.find(`${element.city} ${element.street},ישראל`, function (err, res) {
+                        console.log(`${element.city} ${element.street},ישראל`);
+                        var location = res[0]['location']
+                        let lat3 = location['lat']
+                        let lng3 = location['lng']
+                        calcCrow(lat1, lng1, lat3, lng3, element.requestNumber)
+
+                    });
+                }
+
+
+            });
+        }
 
     }, (err) => console.log('err from FindLatAndLng: ' + err))
         .catch((err) => console.log('err from catch: ' + err))
@@ -118,7 +121,7 @@ function calcCrow(lat1, lng1, lat2, lng2, n) {
     var point2 = { lat: lat2, lng: lng2 }
     var haversine_km = haversine(point1, point2) / 1000
     console.log(`1{${lat1},${lng1}}`);
-    console.log('o',n,':', haversine_km,`{${lat2},${lng2}}`);
+    console.log('o', n, ':', haversine_km, `{${lat2},${lng2}}`);
     if (haversine_km < 10) {
         debugger;
         arr.push(n)

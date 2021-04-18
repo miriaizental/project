@@ -55,6 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
     localStorage.setItem("login", "")
     this.vs.logIn = '';
     this.login = '';
+    this.route.navigate(['/home'])
   }
 
   GoBack() {
