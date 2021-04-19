@@ -6,6 +6,7 @@ import { AskForHelp } from '../models/askForHelp';
 import { JsonPipe } from '@angular/common';
 import { VolunteerSignUp } from '../models/VolunteerSignUp';
 import { ManagerSignUp } from '../models/Managersignup';
+import { Statistics } from '../models/statistics'
 // import { GoogleMapsAPIWrapper } from '@agm/core';
 //import {Observable} from 'rxjs/Observable';
 
@@ -25,6 +26,8 @@ export class VolunteeringserviceService {
   role
   ipAddress
   coordinates: any;
+  lat
+  lng
 
 
   constructor(private http: HttpClient) {
@@ -41,21 +44,24 @@ export class VolunteeringserviceService {
   }
 
   ///////////////
-  // getPosition(): Promise<any> {
-  //   return new Promise((resolve, reject) => {
+  getPosition(): Promise<any> {
+    return new Promise((resolve, reject) => {
 
-  //     navigator.geolocation.getCurrentPosition(resp => {
+      navigator.geolocation.getCurrentPosition(resp => {
+
+        this.lat = resp.coords.latitude
+        this.lng = resp.coords.longitude
+        //resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
 
 
-  //       resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
+      },
+        err => {
+          reject(err);
+        });
+    });
 
-  //     },
-  //       err => {
-  //         reject(err);
-  //       });
-  //   });
+  }
 
-  // }
 
   /////////////////////////////////////////////////////////////////////////////////
 
@@ -72,8 +78,15 @@ export class VolunteeringserviceService {
   getAllRequests(): Observable<AskForHelp[]> {
     var x = this.ipAddress
     console.log('ipa', x);
-    
-    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`, { params: { ipAddress: this.ipAddress } })
+    this.getPosition()
+    console.log('p', this.lat, this.lng);
+    let position = {
+      'lat': this.lat,
+      'lng': this.lng
+      
+    }
+
+    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`,{params:position})
   }
 
   createNewCall(call: AskForHelp): Observable<JSON> {
@@ -138,8 +151,25 @@ export class VolunteeringserviceService {
     return this.http.get<JSON>(`${this.url}/api/contactUs`, { params: data })
 
   }
-  sendfeedback(data: any) {
+  sendfeedback(data: Statistics): Observable<JSON> {
+    //console.log('d', data);
 
+    return this.http.post<JSON>(`${this.url}/api/AddFeedBack`, data, this.options)
+  }
+  GetCities(): Observable<Array<Object>> {
+    return this.http.get<Array<Object>>(`${this.url}/api/getCities`)
+  }
+
+  TypesOfLimitations(): Observable<Array<Object>> {
+    return this.http.get<Array<Object>>(`${this.url}/api/typesOfLimitations`)
+  }
+
+  Satisfaction(): Observable<Array<Object>> {
+    return this.http.get<Array<Object>>(`${this.url}/api/satisfaction`)
+  }
+  ResponseTime():Observable<Array<Object>> {
+    
+    return this.http.get<Array<Object>>(`${this.url}/api/responseTime`)
 
   }
 

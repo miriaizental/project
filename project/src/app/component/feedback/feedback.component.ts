@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service'
+import { Statistics } from 'src/app/models/statistics'
 
 
 @Component({
@@ -16,20 +17,22 @@ export class FeedbackComponent implements OnInit {
   constructor(private route: Router, private Volunteeringservice: VolunteeringserviceService) { }
 
   ngOnInit(): void {
-    this.feedbackForm=new FormGroup({
-      time:new FormControl(),
-      satisfaction:new FormControl(),
-      remarks:new FormControl()
+    this.feedbackForm = new FormGroup({
+      time: new FormControl(),
+      satisfaction: new FormControl(),
+      remarks: new FormControl()
     })
   }
 
-  send(){
-    let data={
-      'time':this.feedbackForm.controls['time'].value,
-      'satisfaction':this.feedbackForm.controls['satisfaction'].value,
-      'remarks':this.feedbackForm.controls['remarks'].value
-    }
-    this.Volunteeringservice.sendfeedback(data)
+  send() {
+    let sta = new Statistics()
+
+    sta.responseTime = this.feedbackForm.controls['time'].value
+    sta.satisfaction = this.feedbackForm.controls['satisfaction'].value
+    sta.remarks = this.feedbackForm.controls['remarks'].value
+
+    this.Volunteeringservice.sendfeedback(sta).subscribe()
+
     alert('תודה רבה!!\nדעתך חשובה לנו מאד')
 
   }

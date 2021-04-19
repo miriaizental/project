@@ -12,6 +12,10 @@ import { LogupComponent } from './component/logup/logup.component';
 import { FeedbackComponent } from './component/feedback/feedback.component';
 import { StatisticsComponent } from './component/statistics/statistics.component'
 import { NewmanagerComponent } from './component/newmanager/newmanager.component'
+import { Statistic1Component} from './component/statistic1/statistic1.component'
+import { Statistic2Component} from './component/statistic2/statistic2.component'
+import { Statistic3Component} from './component/statistic3/statistic3.component'
+import { Statistic4Component} from './component/statistic4/statistic4.component'
 
 
 const routes: Routes = [
@@ -26,7 +30,11 @@ const routes: Routes = [
   { path: 'logup', component: LogupComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'statistics', component: StatisticsComponent },
-  { path: 'newmanager', component: NewmanagerComponent }
+  { path: 'newmanager', component: NewmanagerComponent },
+  { path: 'statistics-1', component:Statistic1Component},
+  { path: 'statistics-2', component:Statistic2Component},
+  { path: 'statistics-3', component:Statistic3Component},
+  { path: 'statistics-4', component:Statistic4Component},
 
 
 ];

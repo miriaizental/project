@@ -1,24 +1,26 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
-</head>
-<body>
-    <div style="display: block">
-        <canvas mdbChart
-            [chartType]="chartType"
-            [datasets]="chartDatasets"
-            [labels]="chartLabels"
-            [colors]="chartColors"
-            [options]="chartOptions"
-            [legend]="true"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)">
-        </canvas>
-      </div>
-</body>
-</html> -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="javascript:void(0)" (click)="setStatisticsIsShown(0)">1</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(1)">2</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(2)">3</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(3)">4</a>
+  </li>
+</ul>
+<div *ngIf="statisticShown[0]">
+  <app-statistic1></app-statistic1>
+</div>
+<div *ngIf="statisticShown[1]">
+  <app-statistic2></app-statistic2>
+</div>
+<div *ngIf="statisticShown[2]">
+  <app-statistic3></app-statistic3>
+</div>
+<div *ngIf="statisticShown[3]">
+  <app-statistic4></app-statistic4>
+</div>

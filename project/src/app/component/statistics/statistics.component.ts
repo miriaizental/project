@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartType, ChartOptions, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { VolunteeringserviceService } from 'src/app/services/volunteeringservice.service';
+import { data } from 'jQuery';
+import { Router } from '@angular/router';
+
+//import { ChartDataSets } from 'chart.js';
+//import { ChartDataset } from 'chart.js';
+//import { ChartOptions, ChartType } from 'chart.js';
+//import { Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-statistics',
@@ -8,41 +19,38 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class StatisticsComponent implements OnInit {
-
-  title = 'Bar Chart Example in Angular 4';
-
   
-  // dataSource: Object;
-  // chartConfig: Object;
+ statisticShown=[true,false,false,false]
+ 
+  
 
-  constructor() {
 
-    
-        
+
+  ////////////////////////////////////stat4
+  
+  ///////////////////////////////////////////
+
+  constructor(private vs: VolunteeringserviceService,private route: Router) {
+
+
   }
+
+
 
   ngOnInit(): void {
+    //this.getCities()
+    //this.TypesOfLimitations()
+    //this.Satisfaction()
+    //this.ResponseTime()
   }
-
-  // chartType: string = 'pie';
-
-  // public chartDatasets: Array<any> = [
-  //   { data: [300, 50, 100, 40, 120], label: 'My First dataset' }
-  // ];
-
-  // public chartLabels: Array<any> = ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'];
-
-  // public chartColors: Array<any> = [
-  //   {
-  //     backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
-  //     hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
-  //     borderWidth: 2,
-  //   }
-  // ];
-
-  // public chartOptions: any = {
-  //   responsive: true
-  // };
-  // public chartClicked(e: any): void { }
-  // public chartHovered(e: any): void { }
+  
+setStatisticsIsShown(num:number){
+  this.statisticShown=[false,false,false,false],
+  this.statisticShown[num]=true
 }
+  
+  
+}
+
+
+

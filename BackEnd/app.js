@@ -18,6 +18,7 @@ const volunteer_sign_up_route = require('./routes/VolunteerSignUp.route')
 const request_in_my_care_route = require('./routes/RequestsInMyCare.route')
 const contact_us_route = require('./routes/ContactUs.route')
 const manager_sign_up_route = require('./routes/ManagerSignup.route')
+const statistics=require('./routes/Statistics.route')
 /////////////////////////
 // const googleMapsClient = require('@google/maps').createClient({
 //     key: 'AIzaSyBQ15dTEVyPYF67jF4omi6YBx3CIFFO2oA'
@@ -75,7 +76,7 @@ volunteer_sign_up_route.route(app)
 request_in_my_care_route.route(app)
 contact_us_route.route(app)
 manager_sign_up_route.route(app)
-
+statistics.route(app)
 /////////////////////////////////
 
 /////////////////////////////////////

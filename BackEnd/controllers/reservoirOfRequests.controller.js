@@ -69,11 +69,16 @@ async function UpdateResponseDate(request, response) {
 //מציאת נקודות אורך ורוחב לפי כתובת IP
 
 async function FindLatAndLng(request, response) {
-    const ip1 = request.query.ipAddress
-    const geo1 = geoip.lookup(ip1);
-    const lat1 = geo1.ll[1]
-    const lng1 = geo1.ll[0]
+    let position=request.query
+    // const ip1 = request.query.ipAddress
+    // const geo1 = geoip.lookup(ip1);
+    // const lat1 = geo1.ll[1]
+    // const lng1 = geo1.ll[0]
+    console.log('pos: ',position);
+    const lat1 = position.lat
+    const lng1 = position.lng
 
+    console.log('this', lat1, lng1);
 
     let query = `select requestNumber,ipAddress,a.city,a.street,auto from Users_tbl u
     join AsksForHelp_tbl a on a.password=u.password`
@@ -81,26 +86,34 @@ async function FindLatAndLng(request, response) {
     await dal.executeAsync(query, request.body, response).then((data) => {
 
         data.forEach(element => {
-            if (element.auto == 1) {
-                var ip2 = element.ipAddress
-                var geo2 = geoip.lookup(ip2);
-                let lat2 = geo2.ll[1];
-                let lng2 = geo2.ll[0]
+            // if (element.auto == 1) {
+            //     var ip2 = element.ipAddress
+            //     var geo2 = geoip.lookup(ip2);
+            //     let lat2 = geo2.ll[1];
+            //     let lng2 = geo2.ll[0]
+            //     calcCrow(lat1, lng1, lat2, lng2, element.requestNumber)
+
+            // }
+            // else {
+            //     geo.find(`${element.city} ${element.street},ישראל`, function (err, res) {
+            //         console.log(`${element.city} ${element.street},ישראל`);
+            //         var location = res[0]['location']
+            //         let lat3 = location['lat']
+            //         let lng3 = location['lng']
+            //         calcCrow(lat1, lng1, lat3, lng3, element.requestNumber)
+
+            //     });
+            // }
+            geo.find(`${element.city} ${element.street},ישראל`, function (err, res) {
+                //console.log(`${element.city} ${element.street},ישראל`);
+                var location = res[0]['location']
+                let lat2 = location['lat']
+                let lng2 = location['lng']
                 calcCrow(lat1, lng1, lat2, lng2, element.requestNumber)
-               
-            }
-            else {
-                geo.find(`${element.city} ${element.street},ישראל`, function (err, res) {
-                    console.log(`${element.city} ${element.street},ישראל`);
-                    var location = res[0]['location']
-                    let lat3 = location['lat']
-                    let lng3 = location['lng']
-                    calcCrow(lat1, lng1, lat3, lng3, element.requestNumber)
-                   
-                });
-            }
-        
-            
+
+            });
+
+
         });
 
     }, (err) => console.log('err from FindLatAndLng: ' + err))
@@ -117,13 +130,14 @@ function calcCrow(lat1, lng1, lat2, lng2, n) {
     var point1 = { lat: lat1, lng: lng1 }
     var point2 = { lat: lat2, lng: lng2 }
     var haversine_km = haversine(point1, point2) / 1000
-    console.log(`1{${lat1},${lng1}}`);
-    console.log('o',n,':', haversine_km,`{${lat2},${lng2}}`);
+    console.log('o', n, ':', haversine_km, `{${lat2},${lng2}}`);
     if (haversine_km < 10) {
         debugger;
         arr.push(n)
     }
 }
+
+
 
 module.exports = {
     GetAllRequests,
