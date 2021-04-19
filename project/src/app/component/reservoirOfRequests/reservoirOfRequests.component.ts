@@ -50,6 +50,7 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
     this.requests = new Array<object>()
 
     this.volunteeringservice.getAllRequests(this.ipAddress).subscribe((ans) => {
+      debugger;
       this.requests = ans
     })
   }
@@ -71,10 +72,10 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
                 alert(data['MESSAGE'])
               this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
                 // connection.send('refresh')
+                debugger
                 if (data['STATUS'] == 'SUCCESS') {
-                  this.ws.send()
-                  this.ws.close()
                   this.route.navigate(['/requestinmycare'])
+                  this.ws.send()
                 }
                 else {
                   alert(data['MESSAGE'])

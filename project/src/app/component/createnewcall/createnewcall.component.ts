@@ -49,7 +49,7 @@ export class CreatenewcallComponent implements OnInit {
         call.time = this.createNewCallForm.controls['time'].value
         call.street = this.createNewCallForm.controls['street'].value
         call.city = this.createNewCallForm.controls['city'].value
-        call.location=0
+        call.location = 0
       }
       else {
 
@@ -65,19 +65,18 @@ export class CreatenewcallComponent implements OnInit {
         call.password = localStorage.getItem("login")
         call.requestDetails = this.createNewCallForm.controls['details'].value
         call.time = this.createNewCallForm.controls['time'].value
-        call.location=1
+        call.location = 1
 
 
       }
 
       this.Volunteeringservice.createNewCall(call).subscribe((data) => {
 
-
         alert(data["MESSAGE"]);
-        //this.ws.send()
-        // this.ws.close()
-        //this.ws.connect()
-        this.route.navigate(['/askforhelp'])
+        if (data['STATUS'] == 'SUCCESS') {
+          this.route.navigate(['/askforhelp'])
+          this.ws.send()          
+        }
       })
     }
     else {
@@ -103,10 +102,10 @@ export class CreatenewcallComponent implements OnInit {
 
     var resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=` + latitude + `&lon=` + longitude + `&zoom=18&addressdetails=1`);
     var state = await resp.json();
-    console.log('lat',latitude,'lng',longitude);
-     
-    console.log('s',state.address);
-    
+    console.log('lat', latitude, 'lng', longitude);
+
+    console.log('s', state.address);
+
     return state.address
 
   }

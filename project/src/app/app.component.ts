@@ -57,6 +57,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.login = '';
     this.route.navigate(['/home'])
   }
+  goHome() {
+    this.route.navigate(['/home'])
+  }
 
   GoBack() {
     this.location.back()
