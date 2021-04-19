@@ -11,7 +11,7 @@
     
     <div class="btn-group">
       <button *ngIf='isLogedIn()' class="btn btn-outline-success btn-sm" (click)="Logout()">התנתק</button>
-      <button [routerLink]="['/home']" class="btn btn-outline-success btn-sm">בית</button>
+      <button (click)="goHome()" class="btn btn-outline-success btn-sm">בית</button>
       <button (click)="GoBack()" class="btn btn-outline-success btn-sm" id="prev">-></button>
     </div>
     

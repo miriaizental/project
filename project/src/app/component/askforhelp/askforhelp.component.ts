@@ -21,14 +21,7 @@ export class AskforhelpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ws.wsUpdate.subscribe(
-
-      (data) => {
-        this.GetUserRequests();
-      }
-      , (error) => {
-        console.log(error);
-      })
+    
   }
 
   GetUserRequests() {
@@ -46,9 +39,10 @@ export class AskforhelpComponent implements OnInit {
     var answer = window.confirm("האם אתה בטוח שהינך רוצה להסיר בקשה זו?")
     if (answer) {
       this.Volunteeringservice.removeRequest(reqnum).subscribe((data) => {
-        this.ws.send()
-        //this.ws.connect()
-        this.ws.close()
+        if (data['STATUS'] == 'SUCCESS') {
+          this.GetUserRequests()
+          this.ws.send()
+        }
 
       })
     }

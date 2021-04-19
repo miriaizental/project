@@ -4,6 +4,7 @@ import { AskForHelp } from 'src/app/models/askForHelp'
 import { Router } from '@angular/router';
 import { WebSocketServiceService } from 'src/app/services/web-socket-service.service'
 // const connection = new WebSocket('ws://localhost:8080');
+import { HttpClient } from '@angular/common/http'
 
 
 @Component({
@@ -12,14 +13,17 @@ import { WebSocketServiceService } from 'src/app/services/web-socket-service.ser
   styleUrls: ['./reservoirOfRequests.component.css']
 })
 export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
-
+  ipAddress:string;
   requests: Array<object>;
   login = localStorage.getItem("login");
-  constructor(private volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
+  constructor(private http: HttpClient,private volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
 
-
-    this.getAllRequests();
-    ws.connect()
+    this.http.get('https://jsonip.com').subscribe((ipOfNetwork) => {
+      this.ipAddress = ipOfNetwork['ip']
+      this.getAllRequests();
+      ws.connect()
+    })
+    
   }
 
 
@@ -33,7 +37,6 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
       , (error) => {
         console.log(error);
       })
-
   }
   ngOnDestroy() {
 
@@ -46,9 +49,9 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
   getAllRequests() {
     this.requests = new Array<object>()
 
-    this.volunteeringservice.getAllRequests().subscribe((ans) => {
+    this.volunteeringservice.getAllRequests(this.ipAddress).subscribe((ans) => {
+      debugger;
       this.requests = ans
-      //console.log("reached getAllRequests ====" + ans.length);
     })
   }
 
@@ -69,10 +72,10 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
                 alert(data['MESSAGE'])
               this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
                 // connection.send('refresh')
+                debugger
                 if (data['STATUS'] == 'SUCCESS') {
-                  this.ws.send()
-                  this.ws.close()
                   this.route.navigate(['/requestinmycare'])
+                  this.ws.send()
                 }
                 else {
                   alert(data['MESSAGE'])
