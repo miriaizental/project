@@ -45,7 +45,7 @@ export class StatisticsComponent implements OnInit {
   }
   
 setStatisticsIsShown(num:number){
-  this.statisticShown=[false,false,false,false],
+  this.statisticShown=[false,false,false,false]
   this.statisticShown[num]=true
 }
   

@@ -51,7 +51,7 @@ export class VolunteeringserviceService {
 
         this.lat = resp.coords.latitude
         this.lng = resp.coords.longitude
-        //resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
+        resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
 
 
       },
@@ -75,26 +75,16 @@ export class VolunteeringserviceService {
     return this.http.post<JSON>(`${this.url}/api/updateResponseDate`, { "requestnumber": requestnumber }, this.options)
   }
 
-<<<<<<< HEAD
   getAllRequests(): Observable<AskForHelp[]> {
-    var x = this.ipAddress
-    console.log('ipa', x);
-    this.getPosition()
-    console.log('p', this.lat, this.lng);
     let position = {
       'lat': this.lat,
       'lng': this.lng
-      
+
     }
 
-    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`,{params:position})
-=======
-  getAllRequests(ip:string): Observable<AskForHelp[]> {
-    console.log('ipa', ip);
-    
-    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`, { params: { ipAddress: ip } })
->>>>>>> e177c7da551139bc7fa582e0a7761031d85bdecf
+    return this.http.get<AskForHelp[]>(`${this.url}/api/allRequests`, { params: position })
   }
+
 
   createNewCall(call: AskForHelp): Observable<JSON> {
     return this.http.post<JSON>(`${this.url}/api/createNewCall`, call, this.options)
@@ -174,8 +164,8 @@ export class VolunteeringserviceService {
   Satisfaction(): Observable<Array<Object>> {
     return this.http.get<Array<Object>>(`${this.url}/api/satisfaction`)
   }
-  ResponseTime():Observable<Array<Object>> {
-    
+  ResponseTime(): Observable<Array<Object>> {
+
     return this.http.get<Array<Object>>(`${this.url}/api/responseTime`)
 
   }

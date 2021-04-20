@@ -14,7 +14,7 @@ import { VolunteeringserviceService } from 'src/app/services/volunteeringservice
 
 export class AppComponent implements OnInit, OnDestroy {
 
-  
+
   title = 'project';
   login = localStorage.getItem("login");
   role = localStorage.getItem("role")
@@ -25,8 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //   console.log(JSON.stringify(data,null,2));
 
     // })
-    console.log(
-      window.navigator)
+    console.log(window.navigator)
 
     if (this.location.path() == "") {
       this.route.navigate(['/home'])
@@ -34,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     if (localStorage.getItem("login") == null) {
       localStorage.setItem("login", "")
+      localStorage.setItem("role", "")
     }
     //localStorage.setItem("ipaddress","")
     console.log("login: " + localStorage.getItem("login"));
@@ -53,8 +53,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   Logout() {
     localStorage.setItem("login", "")
+    localStorage.setItem("role", "")
     this.vs.logIn = '';
     this.login = '';
+    this.vs.role = '';
+    this.role = '';
     this.route.navigate(['/home'])
   }
   goHome() {

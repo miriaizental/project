@@ -10,7 +10,7 @@
 
 <body dir="rtl">
     <div class="comp">
-        <div class="text-success" id="sum">סך הכל {{requests.length}} בקשות ממתינות למענה באזור שלך</div>
+         <div class="text-success" id="sum">סך הכל {{this.requests?.length}} בקשות ממתינות למענה באזור שלך</div>
 
         <div class="container-fluid">
             <div *ngFor="let req of requests" class="request card bt">

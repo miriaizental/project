@@ -21,7 +21,6 @@ export class AskforhelpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
   }
 
   GetUserRequests() {

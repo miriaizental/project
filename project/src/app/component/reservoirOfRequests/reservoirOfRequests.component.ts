@@ -13,14 +13,13 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./reservoirOfRequests.component.css']
 })
 export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
-  ipAddress:string;
-  requests: Array<object>;
+  //ipAddress:string;
+  requests:Array<object>;
   login = localStorage.getItem("login");
   constructor(private http: HttpClient,private volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
 
-    this.http.get('https://jsonip.com').subscribe((ipOfNetwork) => {
-      this.ipAddress = ipOfNetwork['ip']
-      this.getAllRequests();
+    this.volunteeringservice.getPosition().then(()=>{
+      this.getAllRequests()
       ws.connect()
     })
     
@@ -47,10 +46,10 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
 
 
   getAllRequests() {
+    
     this.requests = new Array<object>()
 
-    this.volunteeringservice.getAllRequests(this.ipAddress).subscribe((ans) => {
-      debugger;
+    this.volunteeringservice.getAllRequests().subscribe((ans) => {
       this.requests = ans
     })
   }

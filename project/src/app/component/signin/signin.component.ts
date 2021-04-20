@@ -32,6 +32,7 @@ export class SigninComponent implements OnInit {
           localStorage.setItem("role",this.signInForm.controls.type.value)
           
           this.vs.logIn=this.signInForm.controls.password.value
+          this.vs.role=this.signInForm.controls.type.value
           this.route.navigate(['/home'])
         }
         else {

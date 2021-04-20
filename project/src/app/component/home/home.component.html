@@ -8,6 +8,7 @@
 </head>
 
 <body id="main">
+    
     <div *ngIf="isLogedIn()" class="btn-group container-fluid">
         <button [routerLink]="['/createnewcall']" class="btn btn-success userButton2" *ngIf="Roletype()==2">בקש עזרה</button>
         <button [routerLink]="['/askforhelp']" class="btn btn-success userButton2" *ngIf="Roletype()==2">הבקשות שלי</button>
