@@ -44,7 +44,7 @@ app.listen(process.env.PORT || 3000, () => {
     cron.schedule('53 12 * * *', () => {
         CheckMyRequests(request, response, 'Users_tbl')
     })
-    cron.schedule('46 04 * * *', () => {
+    cron.schedule('08 09 * * *', () => {
         CheckMyRequests(request, response, 'Volunteers_tbl')
     })
     cron.schedule('37 18 * * *', () => {

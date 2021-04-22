@@ -6,7 +6,7 @@ const { successResponse, failureResponse } = require("../common/service.js")
 //הצגת כל הבקשות שלקח על עצמו המתנדב
 
 async function GetVolunteerRequests(request, response) {
-    const query = `select Users_tbl.userName,Users_tbl.email,Users_tbl.phone,AsksForHelp_tbl.requestDetails,
+    const query = `select Users_tbl.userName,Users_tbl.email,Users_tbl.phone,AsksForHelp_tbl.street,AsksForHelp_tbl.city,AsksForHelp_tbl.requestDetails,
     AsksForHelp_tbl.requestNumber from AsksForHelp_tbl 
     join Users_tbl on AsksForHelp_tbl.password=Users_tbl.password
     where AsksForHelp_tbl.volunteerpassword='${request.query.password}'`

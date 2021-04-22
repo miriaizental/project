@@ -16,7 +16,8 @@ export class AskforhelpComponent implements OnInit {
 
 
   constructor(private Volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
-    
+    this.GetUserRequests()
+
     ws.connect()
   }
 
@@ -26,7 +27,6 @@ export class AskforhelpComponent implements OnInit {
 
   GetUserRequests() {
 
-    
     this.Volunteeringservice.getUserRequests().subscribe((ans) => {
       this.userRequests = new Array<object>()
       ans.forEach(element => {
