@@ -1,3 +1,7 @@
 body{
-    text-align: right;
+        text-align: right;
+        margin: 10px;
+}
+svg{
+    margin-right: 10px;
 }

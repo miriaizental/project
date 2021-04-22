@@ -10,7 +10,7 @@
 
 <body>
     <form [formGroup]="ManagerSignUpForm" (submit)="sendData()" dir="rtl">
-        <h4>יצירת מנהל חדש</h4>
+        <h4>הוספת מנהל</h4>
         <div class="form-group">
             <label for="name">שם מנהל:</label>
             <input id="name" type="text" formControlName="userName" class="form-control">
@@ -23,7 +23,7 @@
             <label for="password">ססמה:</label>
             <input id="password" type="text" formControlName="password" class="form-control" maxlength="10" (change)="checkPassword()" placeholder="בחר סיסמה באורך 6 תוים לפחות">
             <div class="error" *ngIf="ManagerSignUpForm.controls['password'].errors?.required!=null&&ManagerSignUpForm.controls['password'].touched==true">שדה זה הוא שדה חובה</div>
-            <div class="error" *ngIf="ManagerSignUpForm.controls['password'].errors?.pattern!=null&&ManagerSignUpForm.controls['password'].touched==true">בחר סיסמה המורכבת ממספרים ואותיות בלבד</div>
+            <div class="error" *ngIf="ManagerSignUpForm.controls['password'].errors?.pattern!=null&&ManagerSignUpForm.controls['password'].touched==true">בחר סיסמה המורכבת ממספרים ואותיות באנגלית בלבד</div>
             <div class="error" *ngIf="ManagerSignUpForm.controls['password'].errors?.minlength!=null&&ManagerSignUpForm.controls['password'].touched==true">בחר סיסמה באורך 6 תווים לפחות</div>
             <div class="error" *ngIf="!this.checkpassword">ססמה תפוסה</div>
       

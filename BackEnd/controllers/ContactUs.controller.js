@@ -23,8 +23,8 @@ async function ContactUs(request, response) {
     query = `select email from ${tableName} where password='${request.query.password}'`
     await dal.executeAsync(query, request.body, response).then((data) => {
 
-        subject = ' בקשתך מעניינת את אחד מהמתנדבים'
-        html = `<h1>נא צור איתו קשר במייל הבא:</h1><p>${data[0].email}</p>`
+        subject = 'בקשתך מעניינת את אחד מהמתנדבים'
+        html = `<h1> נא צור איתו קשר במייל הבא על מנת שיוכל להענות לבקשתך:</h1><p>${data[0].email}</p>`
 
     }, (err) => console.log('err from ContactUs: ' + err))
         .catch((err) => console.log('err from catch: ' + err))
@@ -39,7 +39,6 @@ async function ContactUs(request, response) {
         .catch((err) => console.log('err from catch: ' + err))
 
 
-    //console.log('password: ', request.query.password, 'email: ', request.query.email);
 
 }
 

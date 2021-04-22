@@ -7,7 +7,7 @@ tableName = "Volunteers_tbl"
 function CreateNewUser(request, response) {
     
     const user = request.body
-    const query = `INSERT INTO ${tableName} VALUES('${user.password}','${user.userName}','${user.phone}','${user.ipAddress}','${user.email}')`
+    const query = `INSERT INTO ${tableName} VALUES('${user.password}','${user.userName}','${user.phone}','${user.ipAddress}','${user.email}',0,0)`
     console.log(query);
     dal.executeAsync(query, request.body, response).then((data) => {
         successResponse('  נרשמת בהצלחה למערכת', data, response).send()
@@ -17,18 +17,6 @@ function CreateNewUser(request, response) {
 }
 
 
-
-// function getLocation() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPosition);
-//     } else {
-//         x.innerHTML = "Geolocation is not supported by this browser.";
-//     }
-// }
-// function showPosition(position) {
-//     console.log("lat: "+position.coords.latitude + 
-//     "lng: " + position.coords.longitude);
-// }
 
 module.exports = {
     CreateNewUser,

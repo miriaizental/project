@@ -69,6 +69,7 @@ async function UpdateResponseDate(request, response) {
 
 async function FindLatAndLng(request, response) {
     let position = request.query
+    console.log('position',position.lat,position.lng);
     const lat1 = position.lat
     const lng1 = position.lng
 
@@ -106,7 +107,7 @@ function calcCrow(lat1, lng1, lat2, lng2, n) {
     var point2 = { lat: lat2, lng: lng2 }
     var haversine_km = haversine(point1, point2) / 1000
 
-    if (haversine_km < 10) {
+    if (haversine_km < 2) {
         arr.push(n)
     }
 }

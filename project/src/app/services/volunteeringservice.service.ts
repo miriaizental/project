@@ -169,5 +169,8 @@ export class VolunteeringserviceService {
     return this.http.get<Array<Object>>(`${this.url}/api/responseTime`)
 
   }
+  ReturnRequest(requestnumber: number): Observable<JSON> {
+    return this.http.post<JSON>(`${this.url}/api/returnRequest`, { "requestnumber": requestnumber}, this.options)
+  }
 
 }

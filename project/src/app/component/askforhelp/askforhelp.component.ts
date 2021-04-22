@@ -16,17 +16,19 @@ export class AskforhelpComponent implements OnInit {
 
 
   constructor(private Volunteeringservice: VolunteeringserviceService, private ws: WebSocketServiceService, private route: Router) {
-    this.GetUserRequests()
+    
     ws.connect()
   }
 
   ngOnInit(): void {
+    this.GetUserRequests()
   }
 
   GetUserRequests() {
 
-    this.userRequests = new Array<object>()
+    
     this.Volunteeringservice.getUserRequests().subscribe((ans) => {
+      this.userRequests = new Array<object>()
       ans.forEach(element => {
         this.userRequests.push(element)
       });
@@ -39,10 +41,16 @@ export class AskforhelpComponent implements OnInit {
     if (answer) {
       this.Volunteeringservice.removeRequest(reqnum).subscribe((data) => {
         if (data['STATUS'] == 'SUCCESS') {
-          this.GetUserRequests()
-          this.ws.send()
+          this.Volunteeringservice.getUserRequests().subscribe((ans) => {
+            debugger;
+            this.userRequests = new Array<object>()
+            ans.forEach(element => {
+              this.userRequests.push(element)
+            });
+            this.ws.send()
+          })
+          
         }
-
       })
     }
   }

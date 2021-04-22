@@ -28,7 +28,7 @@
         שדה זה הוא שדה חובה</div>
       <div class="error"
         *ngIf="signUpForm.controls['password'].errors?.pattern!=null&&signUpForm.controls['password'].touched==true">בחר
-        סיסמה המורכבת ממספרים ואותיות בלבד</div>
+        סיסמה המורכבת ממספרים ואותיות באנגלית בלבד</div>
       <div class="error"
         *ngIf="signUpForm.controls['password'].errors?.minlength!=null&&signUpForm.controls['password'].touched==true">
         בחר סיסמה באורך 6 תווים לפחות</div>
@@ -75,7 +75,7 @@
 
     
 
-    <input type="submit" value="הרשם">
+    <input type="submit" value="הרשם" class="btn btn-success">
 
   </form>
   <div><a [routerLink]="['/signin']">כבר נרשמת לכאן? התחבר/י</a></div>

@@ -45,7 +45,6 @@ async function Satisfaction(request, response) {
 }
 /////////////////////////////////////בדיקת זמן הענות
 async function ResponseTime(request, response) {
-    console.log('tttttttttttt');
     const query = `select responseTime from ${table_name}`
     await dal.executeAsync(query, request.body, response).then((data) => {
 

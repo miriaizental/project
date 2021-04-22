@@ -4,4 +4,8 @@ body{
 }
 #lastreq{
     margin: 10px;
+    text-align: center;
+}
+svg{
+    margin-left: 10px;
 }

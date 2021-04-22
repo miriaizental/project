@@ -53,7 +53,7 @@ export class CreatenewcallComponent implements OnInit {
       }
       else {
 
-        await this.getPosition().then(async pos => {
+        await this.Volunteeringservice.getPosition().then(async pos => {
 
           await this.GetAddress(pos.lat, pos.lng).then(x => {
 
@@ -71,11 +71,11 @@ export class CreatenewcallComponent implements OnInit {
       }
 
       this.Volunteeringservice.createNewCall(call).subscribe((data) => {
-
         alert(data["MESSAGE"]);
         if (data['STATUS'] == 'SUCCESS') {
+          this.ws.send() 
           this.route.navigate(['/askforhelp'])
-          this.ws.send()          
+         
         }
       })
     }
@@ -83,21 +83,7 @@ export class CreatenewcallComponent implements OnInit {
       this.createNewCallForm.markAllAsTouched();
     }
   }
-  getPosition(): Promise<any> {
-    return new Promise((resolve, reject) => {
-
-      navigator.geolocation.getCurrentPosition(resp => {
-
-
-        resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
-
-      },
-        err => {
-          reject(err);
-        });
-    });
-
-  }
+ 
   async GetAddress(latitude, longitude) {
 
     var resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=` + latitude + `&lon=` + longitude + `&zoom=18&addressdetails=1`);

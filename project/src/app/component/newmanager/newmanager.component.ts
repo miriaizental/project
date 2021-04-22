@@ -21,14 +21,13 @@ export class NewmanagerComponent implements OnInit {
   ngOnInit(): void {
     this.ManagerSignUpForm = new FormGroup({
       userName: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[-_a-zA-Zא-ת0-9]*')])),
+      password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[-_a-zA-Z0-9]*')])),
+
       phone: new FormControl('', Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern('^[0-9]*')])),
       email: new FormControl('', Validators.compose([Validators.required, Validators.email]))
 
     })
     this.checkpassword = true
-
-    //this.vs.managerAuthentication().subscribe()
 
   }
   checkPassword(): void {

@@ -1,19 +1,27 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="javascript:void(0)" (click)="setStatisticsIsShown(0)">1</a>
+    <a class="nav-link active" href="javascript:void(0)" (click)="setStatisticsIsShown(0)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
+    </svg></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(1)">2</a>
+    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(1)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
+    </svg></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(2)">3</a>
+    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(2)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
+    </svg></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(3)">4</a>
+    <a class="nav-link" href="javascript:void(0)" (click)="setStatisticsIsShown(3)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
+    </svg></a>
   </li>
 </ul>
 <div *ngIf="statisticShown[0]">
-  <app-statistic1></app-statistic1>
+  <app-statistic4></app-statistic4>
 </div>
 <div *ngIf="statisticShown[1]">
   <app-statistic2></app-statistic2>
@@ -22,5 +30,5 @@
   <app-statistic3></app-statistic3>
 </div>
 <div *ngIf="statisticShown[3]">
-  <app-statistic4></app-statistic4>
+  <app-statistic1></app-statistic1>
 </div>

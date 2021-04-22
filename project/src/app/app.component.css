@@ -10,7 +10,27 @@
 }
 #main{
     text-align: right;
-    padding: 5px;
+    padding: 8px;
     background-color:whitesmoke;
+    margin-bottom: 15px;
 }
+img{
+    padding-bottom: 3px;
+    height: 50px;
+    float: left;
+    width: 70px;
+}
+#arrow{
+    height: 30px;
+    width: 30px;
+}
+button{
+   border-color: whitesmoke;
+    font-size:large;
 
+
+}
+#helpme{
+    padding-bottom: 10px;
+    padding-left: 10px;
+}

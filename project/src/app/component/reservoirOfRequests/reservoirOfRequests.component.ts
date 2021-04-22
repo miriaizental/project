@@ -39,7 +39,7 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
 
-    // connection.close()
+     this.ws.close()
   }
 
   isOpen(ws) { return ws.readyState === ws.OPEN }
@@ -47,9 +47,10 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
 
   getAllRequests() {
     
-    this.requests = new Array<object>()
+    
 
     this.volunteeringservice.getAllRequests().subscribe((ans) => {
+      this.requests = new Array<object>()
       this.requests = ans
     })
   }
@@ -71,27 +72,17 @@ export class reservoirOfRequestsComponent implements OnInit, OnDestroy {
                 alert(data['MESSAGE'])
               this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
                 // connection.send('refresh')
-                debugger
                 if (data['STATUS'] == 'SUCCESS') {
                   this.route.navigate(['/requestinmycare'])
                   this.ws.send()
+                  
                 }
                 else {
                   alert(data['MESSAGE'])
                 }
               })
             })
-            // this.volunteeringservice.updateRequestGranted(requestNumber).subscribe((data) => {
-            //   // connection.send('refresh')
-            //   if (data['STATUS'] == 'SUCCESS') {
-            //     this.ws.send()
-            //     this.ws.close()
-            //     this.route.navigate(['/requestinmycare'])
-            //   }
-            //   else {
-            //     alert(data['MESSAGE'])
-            //   }
-            // })
+            
           }
           else {
             alert("תודה על ההענות, אך בקשה זו כבר בטיפול")

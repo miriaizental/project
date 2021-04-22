@@ -20,48 +20,6 @@ const contact_us_route = require('./routes/ContactUs.route')
 const manager_sign_up_route = require('./routes/ManagerSignup.route')
 const statistics=require('./routes/Statistics.route')
 /////////////////////////
-// const googleMapsClient = require('@google/maps').createClient({
-//     key: 'AIzaSyBQ15dTEVyPYF67jF4omi6YBx3CIFFO2oA'
-// });
-
-// function getDirections(req, callback) {
-//     googleMapsClient.directions({
-//         origin: req.origin,
-//         destination: req.destination,
-//         mode: req.mode
-//     }, function (error, res) {
-//         console.log(error);
-//         console.log(res);
-//         if (!error)
-//             callback(res)
-//     })
-// }
-
-// var inputs = {
-//     origin: "1600 Amphitheatre Parkway, Mountain View, CA",
-//     destination: "1 Infinite Loop, Cupertino, CA 95014, USA",
-//     mode: "driving"
-// }
-
-// app.get('',(req,res)=>{
-//     getDirections(inputs,function(result){
-//         console.log('res:'+JSON.stringify(JSON.parse(JSON.stringify(result))));
-//     })
-// })
-
-// const sendMailAuto = () => {
-//     cron.schedule('59 17 * * *', () => {
-//         CheckMyRequests(request,response)
-//     })
-// }
-//const url = `http://freegeoip.net/json/` + ip
-// const fn = (url, (error, response, body) => {
-//     if (!error && response.statusCode == 200) {
-//         const data = JSON.parse(body)
-//         console.log('locationnnn', location(data));
-//     }
-
-// })
 
 app.use(cors())
 app.use(bd.json())
@@ -79,33 +37,21 @@ manager_sign_up_route.route(app)
 statistics.route(app)
 /////////////////////////////////
 
-/////////////////////////////////////
 app.listen(process.env.PORT || 3000, () => {
-    cron.schedule('55 12 * * *', () => {
+    cron.schedule('05 21 * * *', () => {
         CheckMyRequests(request, response, 'Manager_tbl')
     })
     cron.schedule('53 12 * * *', () => {
         CheckMyRequests(request, response, 'Users_tbl')
     })
-    cron.schedule('54 12 * * *', () => {
+    cron.schedule('46 04 * * *', () => {
         CheckMyRequests(request, response, 'Volunteers_tbl')
     })
     cron.schedule('37 18 * * *', () => {
         DeletingOldRequests(request, response)
 
     })
-    ///////////////////////////
 
-    // var geocoder = new google.maps.Geocoder();
-    // geocoder.geocode({ 'address': 'miami, us' }, function (results, status) {
-    //     if (status == google.maps.GeocoderStatus.OK) {
-    //         console.log("location : " + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
-    //     } else {
-    //         console.log("Something got wrong " + status);
-    //     }
-    // });
-
-    ////////////////////////////
     console.log("server is listening on port 3000")
 })
 

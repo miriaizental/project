@@ -9,6 +9,9 @@ function route(app) {
     app.get("/api/checkMyRequests", (req, res) => {
         RequestsInMyCareController.CheckMyRequests(req, res)
     })
+    app.post('/api/returnRequest',(req,res)=>{
+        RequestsInMyCareController.ReturnRequest(req,res)
+    })
     
     
 }

@@ -12,4 +12,10 @@ body{
 }
 #lastreq{
     margin: 10px;
+    text-align: center;
+}
+#trash{
+    color: black;
+    float: left;
+
 }

@@ -43,7 +43,7 @@ async function RemoveRequest(request, response) {
 
 async function DeletingOldRequests(request, response) {
     const query = `delete from ${table_name} where 
-    DATEDIFF(day,requestDate,GETDATE())>50 and time='מיידי'`
+    DATEDIFF(day,requestDate,GETDATE())>3 and time='מיידי'`
     successResponse('הבקשות נמחקו מהמאגר', data, response).send()
     await dal.executeAsync(query, request.body, response).then((data) => {
     }, (err) => failureResponse('ארעה שגיאה', err, response).send())

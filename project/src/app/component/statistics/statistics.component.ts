@@ -6,10 +6,6 @@ import { VolunteeringserviceService } from 'src/app/services/volunteeringservice
 import { data } from 'jQuery';
 import { Router } from '@angular/router';
 
-//import { ChartDataSets } from 'chart.js';
-//import { ChartDataset } from 'chart.js';
-//import { ChartOptions, ChartType } from 'chart.js';
-//import { Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-statistics',
@@ -19,37 +15,23 @@ import { Router } from '@angular/router';
 
 
 export class StatisticsComponent implements OnInit {
-  
- statisticShown=[true,false,false,false]
- 
-  
+
+  statisticShown = [true, false, false, false]
 
 
-
-  ////////////////////////////////////stat4
-  
-  ///////////////////////////////////////////
-
-  constructor(private vs: VolunteeringserviceService,private route: Router) {
-
-
+  constructor(private vs: VolunteeringserviceService, private route: Router) {
   }
-
-
 
   ngOnInit(): void {
-    //this.getCities()
-    //this.TypesOfLimitations()
-    //this.Satisfaction()
-    //this.ResponseTime()
+
   }
-  
-setStatisticsIsShown(num:number){
-  this.statisticShown=[false,false,false,false]
-  this.statisticShown[num]=true
-}
-  
-  
+
+  setStatisticsIsShown(num: number) {
+    this.statisticShown = [false, false, false, false]
+    this.statisticShown[num] = true
+  }
+
+
 }
 
 

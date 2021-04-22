@@ -19,7 +19,7 @@
         <label for="password">ססמה:</label>
         <input id="password" type="text" formControlName="password" class="form-control" maxlength="10" (change)="checkPassword()" placeholder="בחר סיסמה באורך 6 תוים לפחות">
         <div class="error" *ngIf="volunteerSignUpForm.controls['password'].errors?.required!=null&&volunteerSignUpForm.controls['password'].touched==true">שדה זה הוא שדה חובה</div>
-        <div class="error" *ngIf="volunteerSignUpForm.controls['password'].errors?.pattern!=null&&volunteerSignUpForm.controls['password'].touched==true">בחר סיסמה המורכבת ממספרים ואותיות בלבד</div>
+        <div class="error" *ngIf="volunteerSignUpForm.controls['password'].errors?.pattern!=null&&volunteerSignUpForm.controls['password'].touched==true">בחר סיסמה המורכבת ממספרים ואותיות באנגלית בלבד</div>
         <div class="error" *ngIf="volunteerSignUpForm.controls['password'].errors?.minlength!=null&&volunteerSignUpForm.controls['password'].touched==true">בחר סיסמה באורך 6 תווים לפחות</div>
         <div class="error" *ngIf="!this.checkpassword">ססמה תפוסה</div>
   

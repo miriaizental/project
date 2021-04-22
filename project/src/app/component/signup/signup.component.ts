@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
       userName: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[-_a-zA-Zא-ת0-9]*')])),
+      password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[-_a-zA-Z0-9]*')])),
       phone: new FormControl('', Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern('^[0-9]*')])),
       email:new FormControl('',Validators.compose([Validators.required,Validators.email])),
       city: new FormControl('', Validators.required),
@@ -62,7 +62,9 @@ export class SignupComponent implements OnInit {
 
         if (data['STATUS'] == 'SUCCESS') {
           localStorage.setItem("login", user.password)
+          localStorage.setItem("role","user")
           this.vs.logIn=user.password;
+          this.vs.role="user";
           this.route.navigate(['/home'])
         }
         alert(data['MESSAGE'])
